@@ -10,11 +10,11 @@
 
 ### HomeIOT_distributed_system
 * Simulation aus dem Bereich Smarthome
-UDP / TCP / HTTP / MQTT
-Java, Javafx
-Spark Java
-MongoDB
-HTML/ CSS/ XML/ Json
+* UDP / TCP / HTTP / MQTT
+* Java, Javafx
+* Spark Java
+* MongoDB
+* HTML/ CSS/ XML/ Json
 
 
 ### Photostreams
