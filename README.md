@@ -1,7 +1,6 @@
 # hda_projects
-### Exam lending application
+### ExamLendout Backend Api
 * Nodejs
-* Angular5 cli
 * Mysql
 * Docker, Docker compose
 * Single page application
