@@ -1,0 +1,45 @@
+version: "3"
+
+services: 
+
+  db:
+    image: db.docker
+    build: ./database
+    ports: 
+      - 3306:3306
+    volumes: 
+      - ./database:/usr/src/app:rw
+      - ./database/initneu.sql:/docker-entrypoint-initdb.d/initneu.sql:ro
+
+    command: [--default-authentication-plugin=mysql_native_password]
+    
+    env_file:
+      - ./database/.env 
+
+  backend:
+    image: backend.docker
+    build: ./backend
+    ports: 
+      - 8080:8080
+    depends_on:
+      - "db"
+    env_file:
+      - ./backend/.env
+    volumes: 
+       - ./backend:/usr/src/app
+       - /usr/src/app/node_modules
+
+  # frontend:
+  #   image: frontend.docker
+  #   build: ./frontend
+  #   ports: 
+  #     - 4200:4200
+  #   env_file:
+  #     - ./frontend/.env
+  #   volumes: 
+  #     - ./frontend/ELOapp:/usr/src/app/ELOapp
+  #     - /usr/src/app/ELOapp/node_modules
+      
+    #Otherwise container is exiting immediately
+    # tty: true
+

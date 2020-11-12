@@ -1,0 +1,38 @@
+\hypertarget{structs_evt_data__t}{}\section{s\+Evt\+Data\+\_\+t Struct Reference}
+\label{structs_evt_data__t}\index{sEvtData\_t@{sEvtData\_t}}
+
+
+{\ttfamily \#include $<$event.\+h$>$}
+
+
+
+Collaboration diagram for s\+Evt\+Data\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{structs_evt_data__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structs_evt_data__t_afdd6d7dd093bd1e7fb0e8119631f3385}\label{structs_evt_data__t_afdd6d7dd093bd1e7fb0e8119631f3385}} 
+\mbox{\hyperlink{structs_evt_head__t}{s\+Evt\+Head\+\_\+t}} \mbox{\hyperlink{structs_evt_data__t_afdd6d7dd093bd1e7fb0e8119631f3385}{s\+Evt\+Head}}
+\begin{DoxyCompactList}\small\item\em event type (4 bytes) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structs_evt_data__t_a9f33afe0b148629f63cf3c24618bc759}\label{structs_evt_data__t_a9f33afe0b148629f63cf3c24618bc759}} 
+uint16 \mbox{\hyperlink{structs_evt_data__t_a9f33afe0b148629f63cf3c24618bc759}{\+\_\+dummy}}
+\begin{DoxyCompactList}\small\item\em general/unspecific use, dummy for longword alignment \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structs_evt_data__t_abc91f27ad97034aca5751f6c8c14efd2}\label{structs_evt_data__t_abc91f27ad97034aca5751f6c8c14efd2}} 
+uint16 \mbox{\hyperlink{structs_evt_data__t_abc91f27ad97034aca5751f6c8c14efd2}{data\+Len}}
+\begin{DoxyCompactList}\small\item\em length of data (payload) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structs_evt_data__t_a4e7efc3ffcec18a6b18c276764443687}\label{structs_evt_data__t_a4e7efc3ffcec18a6b18c276764443687}} 
+uint8 \mbox{\hyperlink{structs_evt_data__t_a4e7efc3ffcec18a6b18c276764443687}{data}} \mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em data byte wise (start of payload) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic event pattern with unstructure data array 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+sensorik/src/event.\+h\end{DoxyCompactItemize}

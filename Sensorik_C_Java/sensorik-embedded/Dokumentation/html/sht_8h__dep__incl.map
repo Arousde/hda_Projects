@@ -1,0 +1,6 @@
+<map id="sensorik/sensorik.cydsn/SHT31/sht.h" name="sensorik/sensorik.cydsn/SHT31/sht.h">
+<area shape="rect" id="node1" title="Sensirion SHT driver interface." alt="" coords="208,5,387,47"/>
+<area shape="rect" id="node2" href="$_s_h_t31_8h_source.html" title=" " alt="" coords="5,95,184,136"/>
+<area shape="rect" id="node3" href="$sht3x_8c.html" title="Sensirion SHT3x driver implementation." alt="" coords="208,95,387,136"/>
+<area shape="rect" id="node4" href="$sht__common_8c.html" title=" " alt="" coords="411,95,589,136"/>
+</map>

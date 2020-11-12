@@ -1,0 +1,45 @@
+<mat-toolbar  class="apptitle"> {{  title }} </mat-toolbar>
+ <mat-tab-group>
+  <mat-tab label="purshased">
+
+    <mat-list role="list" *ngFor="let item of purchasedprd">
+      <mat-list-item role="listitem">{{ item.prodName }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qty: &nbsp; {{ item.purchased }}</mat-list-item>
+
+    </mat-list>
+
+
+  </mat-tab>
+  <mat-tab label="buy a product">
+
+    <div class ="addprod">
+
+      <form class="example-form" name="form1">
+   <div class=" alldiv">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Product ID" value="" name="prdname"[(ngModel)]="__ID" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="quantity" value="" name="cat" type="number" [(ngModel)]="qnty" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <div class="carddiv">
+          <mat-card class="card"><span class="price" >Price : </span><span class="eur"> {{ prc }} euro</span> </mat-card>
+          <a (click)="onprice()" ><mat-icon  class="pr">sync</mat-icon></a>
+
+        </div>
+   </div>
+        <div class="bttn">
+          <button (click)="onBuyclicked()"  class="btn" mat-button>&nbsp;&nbsp;BUY&nbsp;&nbsp;  </button>
+          <button (click)="onclear()" type="reset" class="btn" mat-button> &nbsp;&nbsp;Clear&nbsp;&nbsp;</button>
+        </div>
+
+      </form>
+
+
+
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+

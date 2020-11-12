@@ -1,0 +1,15 @@
+Wenn ein Spieler das Spiel startet, wird automatisch die CSV-Datei ausgelesen. Anschließend erscheint eine Begrüßung mit der Auswahl der Menü-Punkte 1) Play Game, 2) read CSV-File, 3) anmelden/Registrieren
+
+Um ein Spiel beginnen zu dürfen, muss sich der Spieler erst einmal anmelden oder registrieren.
+Gibt der Spieler einen Namen ein der bereits vorhanden ist, wird er aufgefordert einen anderen Namen auszuwählen.
+
+Wenn der Spieler "1) Play Game" auswählt, muss er angemeldet sein. Als erstes wählt er die Anzahl der Fragen pro Kategorie aus und anschließend mindestens 2 Kategorien.
+
+Nachdem der Spieler das Spiel eingerichtet hat, erscheint schon die erste Frage mit den möglichen Antworten. 
+Nach jeder Ausgabe wird auf eine Eingabe von dem Spieler gewartet.
+
+Nach der Auswahl wird dem Spieler mitgeteilt ob die Frage richtig beantwortet wurde oder nicht.
+
+Die zufällig generierte Liste der Fragen wird so abgearbeitet
+
+Am ende soll der Spieler eine Auskunft über das Gesamtresultat erhalten

@@ -1,0 +1,10 @@
+<map id="sensorik/sensorik.cydsn/SHT31/sht3x.c" name="sensorik/sensorik.cydsn/SHT31/sht3x.c">
+<area shape="rect" id="node1" title="Sensirion SHT3x driver implementation." alt="" coords="181,5,360,47"/>
+<area shape="rect" id="node2" href="$sensirion__arch__config_8h_source.html" title=" " alt="" coords="183,169,358,196"/>
+<area shape="rect" id="node4" href="$sensirion__common_8h_source.html" title=" " alt="" coords="29,95,186,121"/>
+<area shape="rect" id="node5" href="$sensirion__i2c_8h_source.html" title=" " alt="" coords="211,95,330,121"/>
+<area shape="rect" id="node6" href="$sht_8h.html" title="Sensirion SHT driver interface." alt="" coords="496,95,551,121"/>
+<area shape="rect" id="node8" href="$sht__common_8h_source.html" title=" " alt="" coords="354,95,472,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="235,244,306,271"/>
+<area shape="rect" id="node7" href="$_s_h_t3x__git__version_8h_source.html" title=" " alt="" coords="446,169,601,196"/>
+</map>

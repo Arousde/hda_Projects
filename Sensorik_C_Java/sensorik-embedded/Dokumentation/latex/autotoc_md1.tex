@@ -1,0 +1,259 @@
+The \href{https://code.fbi.h-da.de/pse_mayer_ss19/trunk/tree/master/Allgemein/Beispiele/CY8Ckit-149-BLE/I2C_Event.cydsn}{\texttt{ event structure}} has peen merged into this project.
+
+Each sensor will have to create their own events as the measurements come in.
+
+\subsection*{Creating a new event for your sensor}
+
+In order to implement a new event, you need to make sure there is a corresponding event type and a corresponding event subtype. The event type specifies which measurements are in the event while the event subtype indicates which sensor the measurements came from. To do this, open {\ttfamily \mbox{\hyperlink{event_8h_source}{event.\+h}}} and check for / add definitions for {\ttfamily E\+V\+T\+Y\+P\+\_\+\+M\+E\+A\+S\+U\+R\+E\+M\+E\+NT} \& {\ttfamily E\+V\+S\+U\+B\+T\+Y\+P\+\_\+\+S\+E\+N\+S\+OR}. You also need a {\ttfamily typedef} for a pointer to your event\+: {\ttfamily typedef s\+Evt\+Measurement\+\_\+t$\ast$ ps\+Evt\+Measurement\+\_\+t;}.
+
+Next, check for a {\ttfamily typedef} for your event. If one does not exist, create one like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{typedef struct\{}
+\DoxyCodeLine{    // Event header}
+\DoxyCodeLine{    sEvtHead\_t sEvtHead;      // Event type (has a length of 4 bytes)}
+\DoxyCodeLine{    // Event payload}
+\DoxyCodeLine{    uint32\_t measurement;     // Measurement}
+\DoxyCodeLine{\} sEvtMeasurement\_t;}
+\end{DoxyCode}
+
+
+Then you need to declare two functions to actually create an event\+: {\ttfamily void$\ast$ event\+Write\+Measurement(const uint8 subtype, const uint32\+\_\+t measurement);} \& {\ttfamily void$\ast$ event\+Write\+Sensor\+Measurement(const uint32\+\_\+t measurement);}.
+
+Now go into {\ttfamily event.\+c} and implement these two functions like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{void* eventWriteMeasurement(const uint8 subtype, const uint32\_t measurement) \{}
+\DoxyCodeLine{    // Make sure there is enough free storage space in the event buffer for this event}
+\DoxyCodeLine{    if(getFreeStorageSize() < sizeof(sEvtMeasurement\_t))\{}
+\DoxyCodeLine{        // To avoid overflowing and subsequently crashing, don't write the event}
+\DoxyCodeLine{        PRINTF("Event buffer full.\(\backslash\)r\(\backslash\)n");}
+\DoxyCodeLine{        return pDataPtr;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Create the event}
+\DoxyCodeLine{    psEvtMeasurement\_t eventMeasurement = (psEvtMeasurement\_t)pDataPtr;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Write the event header}
+\DoxyCodeLine{    eventMeasurement->sEvtHead.evtType = EVTYP\_MEASUREMENT;         // Event type}
+\DoxyCodeLine{    eventMeasurement->sEvtHead.evtSubtype = subtype;                // Event subtype}
+\DoxyCodeLine{    eventMeasurement->sEvtHead.evtLen = sizeof(sEvtMeasurement\_t);  // Event length}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Write the event data}
+\DoxyCodeLine{    eventMeasurement->measurement = measurement;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Increment event pointer}
+\DoxyCodeLine{    pDataPtr += eventMeasurement->sEvtHead.evtLen;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Write EOF event to mark the end of all written events.}
+\DoxyCodeLine{    // Everything in the buffer beyond this is free to write to and does not contain any usable data.}
+\DoxyCodeLine{    writeEOF();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    // Return the next free address for the next event}
+\DoxyCodeLine{    return pDataPtr;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{void* eventWriteSensorMeasurement(const uint32\_t measurement) \{}
+\DoxyCodeLine{    return eventWriteMeasurement(EVSUBTYP\_SENSOR, measurement);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+Make sure you also include a way to display your new event on the terminal, in {\ttfamily void terminal\+Input\+Char(uint8 ch)}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{case EVTYP\_MEASUREMENT: \{}
+\DoxyCodeLine{    psEvtMeasurement\_t eventMeasurement = (psEvtMeasurement\_t)pCurrDataBuf;}
+\DoxyCodeLine{    PRINTF("Measurement: \%d\(\backslash\)r\(\backslash\)n", eventMeasurement->measurement);}
+\DoxyCodeLine{    break;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+The last thing then is to actually create an event with your sensor, by adding {\ttfamily event\+Write\+Sensor\+Measurement(measurement);} to your sensors measuring method.
+
+If you did it correctly, you can start your measurements and then read them by displaying all events on the terminal.\hypertarget{autotoc_md1_autotoc_md2}{}\section{Sensors}\label{autotoc_md1_autotoc_md2}
+\subsection*{Availability of all possible configurations of sensors via I2C}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Symbol  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Meaning   }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Symbol  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Meaning   }\\\cline{1-2}
+\endhead
+-\/  &Not connected   \\\cline{1-2}
+✔  &Working   \\\cline{1-2}
+❌  &Not working   \\\cline{1-2}
+\end{longtabu}
+
+
+\subsubsection*{4800 Ω pull-\/up}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+H\+T31  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+G\+P30  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+P\+S30   }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+H\+T31  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+G\+P30  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+P\+S30   }\\\cline{1-3}
+\endhead
+-\/  &-\/  &-\/   \\\cline{1-3}
+-\/  &-\/  &✔   \\\cline{1-3}
+-\/  &✔  &-\/   \\\cline{1-3}
+-\/  &✔  &✔   \\\cline{1-3}
+✔  &-\/  &-\/   \\\cline{1-3}
+✔  &-\/  &✔   \\\cline{1-3}
+✔  &✔  &-\/   \\\cline{1-3}
+✔  &✔  &✔   \\\cline{1-3}
+\end{longtabu}
+
+
+\subsubsection*{No pull-\/up}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+H\+T31  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+G\+P30  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+P\+S30   }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+H\+T31  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+G\+P30  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S\+P\+S30   }\\\cline{1-3}
+\endhead
+-\/  &-\/  &-\/   \\\cline{1-3}
+-\/  &-\/  &❌   \\\cline{1-3}
+-\/  &✔  &-\/   \\\cline{1-3}
+-\/  &✔  &✔   \\\cline{1-3}
+✔  &-\/  &-\/   \\\cline{1-3}
+✔  &-\/  &✔   \\\cline{1-3}
+✔  &✔  &-\/   \\\cline{1-3}
+✔  &✔  &✔   \\\cline{1-3}
+\end{longtabu}
+
+
+\subsection*{\href{https://www.sensirion.com/en/environmental-sensors/particulate-matter-sensors-pm25/}{\texttt{ S\+P\+S30}}}
+
+The S\+P\+S30 sensor by \href{https://www.sensirion.com/en/}{\texttt{ Sensirion}} measures \href{https://en.wikipedia.org/wiki/Particulates}{\texttt{ particulates}} in the air by laser scattering.
+
+\href{https://github.com/Sensirion/embedded-sps}{\texttt{ The Driver used}} is made by \href{https://www.sensirion.com/en/}{\texttt{ Sensirion}}.
+
+\subsubsection*{Pin Assignment\+:}
+
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pin Nr  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Connect   }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pin Nr  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Connect   }\\\cline{1-3}
+\endhead
+1  &V\+DD  &V\+DD   \\\cline{1-3}
+2  &S\+DA  &6.\+5   \\\cline{1-3}
+3  &S\+CL  &6.\+4   \\\cline{1-3}
+4  &S\+EL  &G\+ND   \\\cline{1-3}
+5  &G\+ND  &G\+ND   \\\cline{1-3}
+\end{longtabu}
+
+
+\subsubsection*{Usage}
+
+Initialise a struct {\ttfamily struct \mbox{\hyperlink{structsps30__measurement}{sps30\+\_\+measurement}} measurement} before measuring.
+
+Start the sensor.
+
+Measure the result with {\ttfamily S\+P\+S30\+\_\+\+Read\+\_\+\+Data(\&measurement, N\+U\+L\+L)}.
+
+When the S\+P\+S30 is the only sensor connected to the board, make sure there is a pull-\/up resistor connected to the I2C sda \& scl lines.
+
+\subsection*{V\+O\+C\+Sens}
+
+The \href{https://www.glyn.de/Produkte/Sensoren/VOCSens}{\texttt{ V\+O\+C\+Sens board}} combines two sensors on one board, namely the \href{https://www.sensirion.com/en/environmental-sensors/humidity-sensors/digital-humidity-sensors-for-various-applications/}{\texttt{ S\+H\+T31}} \& the \href{https://www.sensirion.com/de/umweltsensoren/gassensoren/multipixel-gassensoren/}{\texttt{ S\+G\+P30}}, both are made by \href{https://www.sensirion.com/en/}{\texttt{ Sensirion}}.
+
+\subsection*{\href{https://www.sensirion.com/en/environmental-sensors/humidity-sensors/digital-humidity-sensors-for-various-applications/}{\texttt{ S\+H\+T31 Sensor}}}
+
+\href{https://github.com/Sensirion/embedded-sht}{\texttt{ The Driver used}} is made by Sensirion.
+
+\subsubsection*{Usage}
+
+Initialise the S\+H\+T31 Sensor.
+
+Initialise two floats, one for the temperature and one for the humidity.
+
+Then either initialise two pointers to those variables and pass those as arguments to the measuring function, or pass their addresses directly.
+
+You can either use a function which blocks during the measurement, or a non-\/blocking one. In this case you have to make sure to let enough time pass for the sensor to complete the measurement, which takes 15ms.
+
+The U\+A\+RT uses a baud rate of 115200.
+
+The ° from x°C might not render correctly in the terminal.
+
+Your terminal output should look something like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Measured temperature: 24.152°C}
+\DoxyCodeLine{Measured humidity:    50.531\%}
+\DoxyCodeLine{Measured temperature: 24.165°C}
+\DoxyCodeLine{Measured humidity:    50.521\%}
+\DoxyCodeLine{Measured temperature: 24.136°C}
+\DoxyCodeLine{Measured humidity:    50.543\%}
+\DoxyCodeLine{Measured temperature: 24.152°C}
+\DoxyCodeLine{Measured humidity:    50.531\%}
+\DoxyCodeLine{...}
+\end{DoxyCode}
+
+
+\subsubsection*{Combining with a different project}
+
+
+\begin{DoxyItemize}
+\item Copy $\ast$.c \& $\ast$.h into your project, but not main.\+c.
+\item Copy both elements from Top\+Design into your project.
+\item Assign pins according to your needs (this project uses 3.\+0 for I2C scl, 3.\+1 for I2C sda; 7.\+0 for U\+A\+RT rx \& 7.\+1 for U\+A\+RT tx)
+\item In your main.\+c, include \mbox{\hyperlink{_s_h_t31_8h_source}{S\+H\+T31.\+h}}.
+\item You need to initialise the sensor once using {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Init()}
+\end{DoxyItemize}
+
+To measure, use {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Measure(double$\ast$ temperature\+\_\+, double$\ast$ humidity\+\_\+, bool console\+\_\+out)} like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{double temperature;}
+\DoxyCodeLine{double humidity;}
+\DoxyCodeLine{}
+\DoxyCodeLine{GY\_SHT31\_Measure(\&temperature, \&humidity, true);}
+\end{DoxyCode}
+
+
+Note that function blocks during the duration of the measurement.
+
+You can also use {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Ready\+\_\+\+Measurement();} and {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Read\+\_\+\+Measurement(double$\ast$ temperature\+\_\+, double$\ast$ humidity\+\_\+, bool console\+\_\+out);} as a non-\/blocking alternative\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{double temperature;}
+\DoxyCodeLine{double humidity;}
+\DoxyCodeLine{}
+\DoxyCodeLine{GY\_SHT31\_Ready\_Measurement();}
+\DoxyCodeLine{CyDelay(15);}
+\DoxyCodeLine{GY\_SHT31\_Read\_Measurement(\&temperature, \&humidity, true);}
+\end{DoxyCode}
+
+
+\subsection*{\href{https://learn.adafruit.com/adafruit-sgp30-gas-tvoc-eco2-mox-sensor/}{\texttt{ Adafruit S\+G\+P30}}}
+
+\subsubsection*{e\+C\+O2 (equivalent calculated carbon-\/dioxide)}
+
+concentration within a range of 400 to 60,000 parts per million (ppm) \href{https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Carbon_dioxide_equivalent}{\texttt{ https\+://ec.\+europa.\+eu/eurostat/statistics-\/explained/index.\+php/\+Glossary\+:\+Carbon\+\_\+dioxide\+\_\+equivalent}}
+
+\subsubsection*{T\+V\+OC (Total Volatile Organic Compound)}
+
+concentration within a range of 0 to 60,000 parts per billion (ppb) \href{https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/chemische-stoffe/fluechtige-organische-verbindungen\#textpart-1}{\texttt{ https\+://www.\+umweltbundesamt.\+de/themen/gesundheit/umwelteinfluesse-\/auf-\/den-\/menschen/chemische-\/stoffe/fluechtige-\/organische-\/verbindungen\#textpart-\/1}} 

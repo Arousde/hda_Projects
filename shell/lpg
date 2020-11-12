@@ -1,0 +1,96 @@
+#!/bin/bash
+typeset -i a=2 
+until [[ $a -eq 0 || $a -eq 1 ]] ; do
+echo "enter your lpg"
+read lpg
+## lenth of lpg 
+lpglen=${#lpg}
+if [ $lpglen -gt 9 ] ; then
+continue
+fi
+## check if first separator is -
+read sep1 <<< $(echo $lpg|awk -F " " '{ print $1 } ' )
+sep1len=${#sep1}
+if [ $sep1len -lt 5 ] ; then
+continue
+fi
+## check if second separator is \t
+read sep2 <<< $(echo $lpg|awk -F "-" '{ print $2 } ' )
+sep2len=${#sep2}
+if [ $sep2len -lt 5 ] ; then
+continue
+fi
+## col 1
+read a <<< $(echo $lpg|awk -F'[- | " " ]' '{  if (($1 == "DA") || ($1 == "DI") ) print 0 ;else print 2 } ' )
+if [ $a -gt 0 ] ; then 
+echo "must start with DA or DI " 
+continue
+fi
+## col 2 
+if [ $a -eq 0 ] ; then 
+read a <<< $(echo $lpg|awk -F'[- | " " ]' '{ if ( ($2 == "BC") || ($2 == "FC") || ($2 == "GC") || ($2 == "IC") || ($2 == "OC") || ($2 == "QC") ) print 0 ;
+else if ( ($2 == "_C") || ($2 == "_C") || ($2 == "_C") || ($2 == "_C") || ($2 == "_C") || ($2 == "_C") ) print 1 ; else print 2 } ' )
+#in this form BC   " 
+if [ $a -eq 0 ] ; then 
+##get the important col
+read col2 <<< $(echo $lpg|awk -F "-" '{ print $2 } ' )
+##get the number col
+read col2 <<< $(echo $lpg|awk -F " " '{ print $2 } ' )
+##the number should be in [100-999]if
+col2len=${#col2}
+if [ $col2len -ne 3 ] ; then
+echo "in this case the number should be between 100 and 999"
+a=2
+continue
+fi
+## if number with _ generate 
+read undrscr <<< $(echo $col2|grep _ )
+if [ ! -z "$undrscr" ] ; then 
+##generate##
+for i in $( seq 0 9)
+do
+echo $lpg | sed s/_/$i/g
+done
+fi
+fi
+
+## if BC with _ generate 
+if [ $a -eq 1 ] ; then 
+##get the important col
+read col2 <<< $(echo $lpg|awk -F "-" '{ print $2 } ' )
+##get the number col
+read col2 <<< $(echo $lpg|awk -F " " '{ print $2 } ' )
+## if number with _ generate --nested for--
+read undrscr <<< $(echo $col2|grep _ )
+if [ ! -z "$undrscr" ] ; then 
+## get the _C
+read col0 <<< $(echo $lpg|awk -F " " '{ print $1 } ' )
+read coli <<< $(echo $col0|awk -F "-" '{ print $2 } ' )
+##generate##
+for i in B F G I O Q ;
+do
+printf $col0| sed s/_/$i/
+printf " "
+read coll <<< $(echo $col0| sed s/_/$i/)
+for j in $( seq 0 9)
+do
+echo $col2| sed s/_/$j/
+if [ $j -lt 9 ] ; then
+printf $coll
+printf " "
+fi
+done
+done
+fi
+##only _C 
+for j in B F G I O Q ;
+do
+echo $lpg| sed s/_/$j/
+done
+fi
+if [ $a -eq 2 ] ; then 
+echo " bad input   " 
+fi
+fi
+done
+

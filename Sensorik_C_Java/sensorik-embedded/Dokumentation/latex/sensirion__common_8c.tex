@@ -1,0 +1,123 @@
+\hypertarget{sensirion__common_8c}{}\section{sensorik/sensorik.cydsn/sensirion/sensirion\+\_\+common.c File Reference}
+\label{sensirion__common_8c}\index{sensorik/sensorik.cydsn/sensirion/sensirion\_common.c@{sensorik/sensorik.cydsn/sensirion/sensirion\_common.c}}
+{\ttfamily \#include \char`\"{}sensirion\+\_\+common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensirion\+\_\+i2c.\+h\char`\"{}}\newline
+Include dependency graph for sensirion\+\_\+common.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{sensirion__common_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sensirion__common_8c_aba06814ac0239a3aa5190a578cdd4462}\label{sensirion__common_8c_aba06814ac0239a3aa5190a578cdd4462}} 
+uint8\+\_\+t {\bfseries sensirion\+\_\+common\+\_\+generate\+\_\+crc} (uint8\+\_\+t $\ast$data, uint16\+\_\+t count)
+\item 
+\mbox{\Hypertarget{sensirion__common_8c_a82486273b1b96c09dc30d3e049e20e22}\label{sensirion__common_8c_a82486273b1b96c09dc30d3e049e20e22}} 
+int8\+\_\+t {\bfseries sensirion\+\_\+common\+\_\+check\+\_\+crc} (uint8\+\_\+t $\ast$data, uint16\+\_\+t count, uint8\+\_\+t checksum)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_a9a2b5bc64139a84b4011ba94873e47b8}{sensirion\+\_\+fill\+\_\+cmd\+\_\+send\+\_\+buf}} (uint8\+\_\+t $\ast$buf, uint16\+\_\+t cmd, const uint16\+\_\+t $\ast$args, uint8\+\_\+t num\+\_\+args)
+\item 
+int16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_a91e24004cf93a46896bef370e3325bc9}{sensirion\+\_\+i2c\+\_\+read\+\_\+bytes}} (uint8\+\_\+t address, uint8\+\_\+t $\ast$data, uint16\+\_\+t num\+\_\+words)
+\item 
+int16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_a09b902f202ed3c7143aeca3270ca36eb}{sensirion\+\_\+i2c\+\_\+read\+\_\+words}} (uint8\+\_\+t address, uint16\+\_\+t $\ast$data\+\_\+words, uint16\+\_\+t num\+\_\+words)
+\item 
+int16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_a556fcb951ac6bf199a99894aef194005}{sensirion\+\_\+i2c\+\_\+write\+\_\+cmd}} (uint8\+\_\+t address, uint16\+\_\+t command)
+\item 
+int16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_ab3d2fb966eb56386a2438362cdc3f30d}{sensirion\+\_\+i2c\+\_\+write\+\_\+cmd\+\_\+with\+\_\+args}} (uint8\+\_\+t address, uint16\+\_\+t command, const uint16\+\_\+t $\ast$data\+\_\+words, uint16\+\_\+t num\+\_\+words)
+\item 
+int16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_ae52553fb3cb7c4e2fccfb3d4a275dc1f}{sensirion\+\_\+i2c\+\_\+delayed\+\_\+read\+\_\+cmd}} (uint8\+\_\+t address, uint16\+\_\+t cmd, uint32\+\_\+t delay\+\_\+us, uint16\+\_\+t $\ast$data\+\_\+words, uint16\+\_\+t num\+\_\+words)
+\item 
+int16\+\_\+t \mbox{\hyperlink{sensirion__common_8c_ad9214d215dbfb9ac0b845d93fe5d74b8}{sensirion\+\_\+i2c\+\_\+read\+\_\+cmd}} (uint8\+\_\+t address, uint16\+\_\+t cmd, uint16\+\_\+t $\ast$data\+\_\+words, uint16\+\_\+t num\+\_\+words)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module provides functionality that is common to all Sensirion drivers 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sensirion__common_8c_a9a2b5bc64139a84b4011ba94873e47b8}\label{sensirion__common_8c_a9a2b5bc64139a84b4011ba94873e47b8}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_fill\_cmd\_send\_buf@{sensirion\_fill\_cmd\_send\_buf}}
+\index{sensirion\_fill\_cmd\_send\_buf@{sensirion\_fill\_cmd\_send\_buf}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_fill\_cmd\_send\_buf()}{sensirion\_fill\_cmd\_send\_buf()}}
+{\footnotesize\ttfamily uint16\+\_\+t sensirion\+\_\+fill\+\_\+cmd\+\_\+send\+\_\+buf (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{buf,  }\item[{uint16\+\_\+t}]{cmd,  }\item[{const uint16\+\_\+t $\ast$}]{args,  }\item[{uint8\+\_\+t}]{num\+\_\+args }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_a9a2b5bc64139a84b4011ba94873e47b8}{sensirion\+\_\+fill\+\_\+cmd\+\_\+send\+\_\+buf()}} -\/ create the i2c send buffer for a command and a set of argument words. The output buffer interleaves argument words with their checksums. @buf\+: The generated buffer to send over i2c. Then buffer length must be at least S\+E\+N\+S\+I\+R\+I\+O\+N\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+L\+EN + num\+\_\+args $\ast$ (S\+E\+N\+S\+I\+R\+I\+O\+N\+\_\+\+W\+O\+R\+D\+\_\+\+S\+I\+ZE + C\+R\+C8\+\_\+\+L\+EN). @cmd\+: The i2c command to send. It already includes a checksum. @args\+: The arguments to the command. Can be N\+U\+LL if none. @num\+\_\+args\+: The number of word arguments in args.
+
+\begin{DoxyReturn}{Returns}
+The number of bytes written to buf 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensirion__common_8c_ae52553fb3cb7c4e2fccfb3d4a275dc1f}\label{sensirion__common_8c_ae52553fb3cb7c4e2fccfb3d4a275dc1f}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_i2c\_delayed\_read\_cmd@{sensirion\_i2c\_delayed\_read\_cmd}}
+\index{sensirion\_i2c\_delayed\_read\_cmd@{sensirion\_i2c\_delayed\_read\_cmd}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_i2c\_delayed\_read\_cmd()}{sensirion\_i2c\_delayed\_read\_cmd()}}
+{\footnotesize\ttfamily int16\+\_\+t sensirion\+\_\+i2c\+\_\+delayed\+\_\+read\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{cmd,  }\item[{uint32\+\_\+t}]{delay\+\_\+us,  }\item[{uint16\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint16\+\_\+t}]{num\+\_\+words }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_ae52553fb3cb7c4e2fccfb3d4a275dc1f}{sensirion\+\_\+i2c\+\_\+delayed\+\_\+read\+\_\+cmd()}} -\/ send a command, wait for the sensor to process and read data back @address\+: Sensor i2c address @cmd\+: Command @delay\+: Time in microseconds to delay sending the read request @data\+\_\+words\+: Allocated buffer to store the read data @num\+\_\+words\+: Data words to read (without C\+RC bytes)
+
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+U\+S\+\_\+\+OK on success, an error code otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensirion__common_8c_a91e24004cf93a46896bef370e3325bc9}\label{sensirion__common_8c_a91e24004cf93a46896bef370e3325bc9}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_i2c\_read\_bytes@{sensirion\_i2c\_read\_bytes}}
+\index{sensirion\_i2c\_read\_bytes@{sensirion\_i2c\_read\_bytes}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_i2c\_read\_bytes()}{sensirion\_i2c\_read\_bytes()}}
+{\footnotesize\ttfamily int16\+\_\+t sensirion\+\_\+i2c\+\_\+read\+\_\+bytes (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint16\+\_\+t}]{num\+\_\+words }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_a91e24004cf93a46896bef370e3325bc9}{sensirion\+\_\+i2c\+\_\+read\+\_\+bytes()}} -\/ read data words as byte-\/stream from sensor
+
+Read bytes without adjusting values to the uP\textquotesingle{}s word-\/order.
+
+@address\+: Sensor i2c address @data\+: Allocated buffer to store the read bytes. The buffer may also have been modified on S\+T\+A\+T\+U\+S\+\_\+\+F\+A\+IL return. @num\+\_\+words\+: Number of data words(!) to read (without C\+RC bytes) Since only word-\/chunks can be read from the sensor the size is still specified in sensor-\/words (num\+\_\+words = num\+\_\+bytes $\ast$ S\+E\+N\+S\+I\+R\+I\+O\+N\+\_\+\+W\+O\+R\+D\+\_\+\+S\+I\+ZE)
+
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+U\+S\+\_\+\+OK on success, an error code otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensirion__common_8c_ad9214d215dbfb9ac0b845d93fe5d74b8}\label{sensirion__common_8c_ad9214d215dbfb9ac0b845d93fe5d74b8}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_i2c\_read\_cmd@{sensirion\_i2c\_read\_cmd}}
+\index{sensirion\_i2c\_read\_cmd@{sensirion\_i2c\_read\_cmd}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_i2c\_read\_cmd()}{sensirion\_i2c\_read\_cmd()}}
+{\footnotesize\ttfamily int16\+\_\+t sensirion\+\_\+i2c\+\_\+read\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{cmd,  }\item[{uint16\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint16\+\_\+t}]{num\+\_\+words }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_ad9214d215dbfb9ac0b845d93fe5d74b8}{sensirion\+\_\+i2c\+\_\+read\+\_\+cmd()}} -\/ reads data words from the sensor after a command is issued @address\+: Sensor i2c address @cmd\+: Command @data\+\_\+words\+: Allocated buffer to store the read data @num\+\_\+words\+: Data words to read (without C\+RC bytes)
+
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+U\+S\+\_\+\+OK on success, an error code otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensirion__common_8c_a09b902f202ed3c7143aeca3270ca36eb}\label{sensirion__common_8c_a09b902f202ed3c7143aeca3270ca36eb}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_i2c\_read\_words@{sensirion\_i2c\_read\_words}}
+\index{sensirion\_i2c\_read\_words@{sensirion\_i2c\_read\_words}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_i2c\_read\_words()}{sensirion\_i2c\_read\_words()}}
+{\footnotesize\ttfamily int16\+\_\+t sensirion\+\_\+i2c\+\_\+read\+\_\+words (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint16\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint16\+\_\+t}]{num\+\_\+words }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_a09b902f202ed3c7143aeca3270ca36eb}{sensirion\+\_\+i2c\+\_\+read\+\_\+words()}} -\/ read data words from sensor
+
+@address\+: Sensor i2c address @data\+\_\+words\+: Allocated buffer to store the read words. The buffer may also have been modified on S\+T\+A\+T\+U\+S\+\_\+\+F\+A\+IL return. @num\+\_\+words\+: Number of data words to read (without C\+RC bytes)
+
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+U\+S\+\_\+\+OK on success, an error code otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensirion__common_8c_a556fcb951ac6bf199a99894aef194005}\label{sensirion__common_8c_a556fcb951ac6bf199a99894aef194005}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_i2c\_write\_cmd@{sensirion\_i2c\_write\_cmd}}
+\index{sensirion\_i2c\_write\_cmd@{sensirion\_i2c\_write\_cmd}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_i2c\_write\_cmd()}{sensirion\_i2c\_write\_cmd()}}
+{\footnotesize\ttfamily int16\+\_\+t sensirion\+\_\+i2c\+\_\+write\+\_\+cmd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_a556fcb951ac6bf199a99894aef194005}{sensirion\+\_\+i2c\+\_\+write\+\_\+cmd()}} -\/ writes a command to the sensor @address\+: Sensor i2c address @command\+: Sensor command
+
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+U\+S\+\_\+\+OK on success, an error code otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensirion__common_8c_ab3d2fb966eb56386a2438362cdc3f30d}\label{sensirion__common_8c_ab3d2fb966eb56386a2438362cdc3f30d}} 
+\index{sensirion\_common.c@{sensirion\_common.c}!sensirion\_i2c\_write\_cmd\_with\_args@{sensirion\_i2c\_write\_cmd\_with\_args}}
+\index{sensirion\_i2c\_write\_cmd\_with\_args@{sensirion\_i2c\_write\_cmd\_with\_args}!sensirion\_common.c@{sensirion\_common.c}}
+\subsubsection{\texorpdfstring{sensirion\_i2c\_write\_cmd\_with\_args()}{sensirion\_i2c\_write\_cmd\_with\_args()}}
+{\footnotesize\ttfamily int16\+\_\+t sensirion\+\_\+i2c\+\_\+write\+\_\+cmd\+\_\+with\+\_\+args (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{command,  }\item[{const uint16\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint16\+\_\+t}]{num\+\_\+words }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sensirion__common_8c_ab3d2fb966eb56386a2438362cdc3f30d}{sensirion\+\_\+i2c\+\_\+write\+\_\+cmd\+\_\+with\+\_\+args()}} -\/ writes a command with arguments to the sensor @address\+: Sensor i2c address @command\+: Sensor command @data\+: Argument buffer with words to send @num\+\_\+words\+: Number of data words to send (without C\+RC bytes)
+
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+U\+S\+\_\+\+OK on success, an error code otherwise 
+\end{DoxyReturn}

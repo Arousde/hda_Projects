@@ -1,0 +1,86 @@
+.example-form {
+
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.addprod{
+   margin-top: 4em;
+  float: right;
+  width: 70%;
+
+
+}
+.eur{
+
+  width: 30%;
+  float: right;
+   color: #512DA8;
+  font-size: 1.2em;
+
+}
+
+.price{
+  width: 65%;
+  float: left;
+  color: dimgrey;
+  font-size: 1.2em;
+
+
+}
+.card{
+
+  height: 30px;
+  width: 60%;
+  float: left;
+
+}
+
+.carddiv{
+ width: 100%;
+  display: block;
+  margin: 2em;
+}
+.pr{
+  font-size: 4em;
+  width: 25%;
+  float: right;
+  color: #512DA8;
+  cursor : pointer;
+}
+
+.btn{
+
+  background-color: #512DA8;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 15px;
+  cursor: pointer;
+  margin-top: 2em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  transition: background 0.2s ease-in-out;
+
+
+}
+.bttn{
+  width: 100%;
+  display: block;
+  margin-left: 9em;
+  float: left;
+}
+.alldiv{
+  display: block;
+  width: 100%;
+  margin: 2em;
+}
+.apptitleok{
+  color: #4527A0;
+
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GameScene.didBegin(_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "firstBody.categoryBitMask == PhysicsCategory.BallCategory &amp;&amp; secondBody.categoryBitMask == PhysicsCategory.BorderCategory">
+            </PersistentString>
+            <PersistentString
+               value = "firstBody.categoryBitMask == PhysicsCategory.BallCategory &amp;&amp; secondBody.categoryBitMask == PhysicsCategory.BottomCategory">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.touchesBegan(_:with:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "SceneEngine.back.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LivesController.liveLoss(ToScene:from:withBall:):LivesController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Label.CountLives">
+            </PersistentString>
+            <PersistentString
+               value = "view.SceneEngine.gameController.gameState.LabelGameOver">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Lives.liveLoss(ToScene:):Lives.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.Ball">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BricksBuilder.addallBlocks(ToScene:):BricksBuilder.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "numberOfBlocks">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -1,0 +1,32 @@
+# for some reference, see https://community.cypress.com/docs/DOC-11030 & https://www.gitignore.io/api/psoccreator
+
+
+### PSoCCreator ###
+# Userfile
+*.cyprj.*
+*.cywrk.*
+
+# Miscellaneous files
+*.cycdx
+*.gsvd
+*.pdf
+*.rpt
+*/ComponentUpdateLog.txt
+*.log
+*.cyfit
+*.svd
+*.log
+*.zip
+*_datasheet.pdf
+*_timing.html
+
+
+# Folders
+*codegentemp/
+*CoretexM0p/
+*Debug/
+*Generated_Source/
+*Release/
+*Export/
+/.idea/*
+*/.idea/*

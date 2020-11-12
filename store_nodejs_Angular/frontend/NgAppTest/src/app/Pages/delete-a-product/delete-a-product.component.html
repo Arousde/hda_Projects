@@ -1,0 +1,21 @@
+<mat-toolbar  class="apptitle"> {{  title }} </mat-toolbar>
+<div class ="addprod">
+
+  <form class="example-form" name="form1">
+    <div class=" alldiv">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Product ID" value="" name="prdname"[(ngModel)]="__ID" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      </div>
+
+    <div class="bttn">
+      <button (click)="onDeleteclicked()"  class="btn" mat-button>&nbsp;&nbsp;Delete &nbsp;&nbsp;  </button>
+      <button type="reset" class="btn" mat-button> &nbsp;&nbsp;Clear&nbsp;&nbsp;</button>
+    </div>
+
+  </form>
+
+
+
+</div>

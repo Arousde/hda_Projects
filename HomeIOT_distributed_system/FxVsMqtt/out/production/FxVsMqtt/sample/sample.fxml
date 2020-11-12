@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar prefHeight="31.0" prefWidth="1600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#reload" text="reload" />
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tab" layoutY="32.0" prefHeight="800.0" prefWidth="1600.0">
+        <columns>
+          <TableColumn prefWidth="252.0" text="ID">
+              <cellValueFactory><PropertyValueFactory property="id" />
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="186.99996948242188" text="Name">
+              <cellValueFactory><PropertyValueFactory property="name" />
+              </cellValueFactory>
+          </TableColumn>
+            <TableColumn prefWidth="271.0" text="Temperature">
+                <cellValueFactory><PropertyValueFactory property="temperatur" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="0.0" prefWidth="294.0" text="Luftfeuchtigkeit">
+                <cellValueFactory><PropertyValueFactory property="luftfeuchtigkeit" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="269.0" text="Zahldesbadlüfters">
+                <cellValueFactory><PropertyValueFactory property="fensterzustend" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="250.0" text="DrehzahldesBadluefters">
+                <cellValueFactory><PropertyValueFactory property="drehzahldesBadluefters" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+   </children>
+   <padding>
+      <Insets bottom="1.0" />
+   </padding>
+</Pane>

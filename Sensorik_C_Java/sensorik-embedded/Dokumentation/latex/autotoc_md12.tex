@@ -1,0 +1,47 @@
+\href{https://mattermost.fbi.h-da.de/pse-mayer-ss19/channels/sensorik}{\texttt{ Mattermost Forum}}
+
+Base U\+U\+ID F000$\ast$$\ast$\+X\+X\+X\+X$\ast$$\ast$-\/0451-\/4000-\/\+B000-\/000000000000 es handelt sich um 128bit U\+U\+I\+Ds fettgedruckte X\+X\+XX beschreiben die Variablen
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type(hex)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type(\+Text)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Beschreibung  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Format  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Umrechnung   }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type(hex)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type(\+Text)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Beschreibung  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Format  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Umrechnung   }\\\cline{1-5}
+\endhead
+\PBS\centering 0x\+A\+A00  &\PBS\centering Service  &\PBS\centering Air Quality Service  &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A01  &\PBS\centering T\+V\+OC Data  &\PBS\centering Total Volatile Organic Compounds in ppb  &\PBS\centering uint16  &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A02  &\PBS\centering e\+C\+O2 Data  &\PBS\centering equivalent C\+O2 in ppm  &\PBS\centering uint16  &\PBS\centering \\\cline{1-5}
+\PBS\centering -\/  &\PBS\centering &\PBS\centering &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A10  &\PBS\centering Service  &\PBS\centering Temperature Service  &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A11  &\PBS\centering Temp  &\PBS\centering Temperature in Grad Celsius  &\PBS\centering sint32  &\PBS\centering / 1000.\+0   \\\cline{1-5}
+\PBS\centering -\/  &\PBS\centering &\PBS\centering &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A20  &\PBS\centering Service  &\PBS\centering Humidity Service  &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A21  &\PBS\centering H\+UM  &\PBS\centering Humidity in percent  &\PBS\centering sint32  &\PBS\centering / 1000.\+0   \\\cline{1-5}
+\PBS\centering -\/  &\PBS\centering &\PBS\centering &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A30  &\PBS\centering Service  &\PBS\centering Particulates Service  &\PBS\centering &\PBS\centering \\\cline{1-5}
+\PBS\centering 0x\+A\+A31  &\PBS\centering Mass  &\PBS\centering Mass concentration in μg/m$^\wedge$3 (P\+M1.\+0\+:P\+M2.\+5\+:P\+M4.\+0\+:P\+M10.\+0)$\ast$  &\PBS\centering uint32\mbox{[}4\mbox{]}  &\PBS\centering / 10$^\wedge$6   \\\cline{1-5}
+\PBS\centering 0x\+A\+A32  &\PBS\centering Amount  &\PBS\centering Amount per cm$^\wedge$3 (P\+M0.\+5\+:P\+M1.\+0\+:P\+M2.\+5\+:P\+M4.\+0\+:P\+M10.\+0)  &\PBS\centering uint32\mbox{[}5\mbox{]}  &\PBS\centering / 10$^\wedge$6   \\\cline{1-5}
+\PBS\centering 0x\+A\+A33  &\PBS\centering Tps  &\PBS\centering Typical particle size  &\PBS\centering uint32  &\PBS\centering / 10$^\wedge$6   \\\cline{1-5}
+\end{longtabu}
+
+
+
+\begin{DoxyItemize}
+\item Partikelgröße in Mikrometern
+\end{DoxyItemize}
+
+P\+M1.\+0 $<$ 1.\+0 µm (Micrometer); P\+M2.\+5 $<$ 2.\+5 µm; P\+M4.\+0 $<$ 4.\+0 µm; P\+M10.\+0 $<$ 10.\+0 µm
+
+P\+M0.\+5 $<$ 0.\+5 µm; P\+M1.\+0 $<$ 1.\+0 µm; P\+M2.\+5 $<$ 2.\+5 µm; P\+M4.\+0 $<$ 4.\+0 µm; P\+M10.\+0 $<$ 10.\+0 µm
+
+
+
+
+
+No data provided by sensirion.
+
+Accuracy at 25°C and 50\% RH\+:  

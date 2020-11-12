@@ -1,0 +1,174 @@
+\hypertarget{sht_8h}{}\section{sensorik/sensorik.cydsn/\+S\+H\+T31/sht.h File Reference}
+\label{sht_8h}\index{sensorik/sensorik.cydsn/SHT31/sht.h@{sensorik/sensorik.cydsn/SHT31/sht.h}}
+
+
+Sensirion S\+HT driver interface.  
+
+
+{\ttfamily \#include \char`\"{}S\+H\+T3x\+\_\+git\+\_\+version.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensirion\+\_\+arch\+\_\+config.\+h\char`\"{}}\newline
+Include dependency graph for sht.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{sht_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sht_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sht_8h_a2403320c41f08e7567cb169de5db66b3}\label{sht_8h_a2403320c41f08e7567cb169de5db66b3}} 
+\#define {\bfseries S\+T\+A\+T\+U\+S\+\_\+\+OK}~0
+\item 
+\mbox{\Hypertarget{sht_8h_aa180f2c480b3cbe69f70136fe0ce18e0}\label{sht_8h_aa180f2c480b3cbe69f70136fe0ce18e0}} 
+\#define {\bfseries S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+D\+A\+TA}~(-\/1)
+\item 
+\mbox{\Hypertarget{sht_8h_a88e9ad2752acfa79efa5f4cf30ce252f}\label{sht_8h_a88e9ad2752acfa79efa5f4cf30ce252f}} 
+\#define {\bfseries S\+T\+A\+T\+U\+S\+\_\+\+C\+R\+C\+\_\+\+F\+A\+IL}~(-\/2)
+\item 
+\mbox{\Hypertarget{sht_8h_a6bbd69a9bc99e6db05c47d0c3c0ae039}\label{sht_8h_a6bbd69a9bc99e6db05c47d0c3c0ae039}} 
+\#define {\bfseries S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+D\+E\+V\+I\+CE}~(-\/3)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \mbox{\hyperlink{sht_8h_aae3fdcc5e292ae3dec9817d1b30467ec}{sht\+\_\+probe}} (void)
+\item 
+int8\+\_\+t \mbox{\hyperlink{sht_8h_a41cb286ca446a15c68c82c6266b19952}{sht\+\_\+measure\+\_\+blocking\+\_\+read}} (int32\+\_\+t $\ast$temperature, int32\+\_\+t $\ast$humidity)
+\item 
+int8\+\_\+t \mbox{\hyperlink{sht_8h_a69ba16b497e8ef05309f3f8d9b8ba69a}{sht\+\_\+measure}} (void)
+\item 
+int8\+\_\+t \mbox{\hyperlink{sht_8h_a3b20bd6f7e406c922227da875c7dd889}{sht\+\_\+read}} (int32\+\_\+t $\ast$temperature, int32\+\_\+t $\ast$humidity)
+\item 
+int8\+\_\+t \mbox{\hyperlink{sht_8h_a465fac222faad1a1f47d26c2dde98907}{sht\+\_\+disable\+\_\+sleep}} (uint8\+\_\+t disable\+\_\+sleep)
+\item 
+void \mbox{\hyperlink{sht_8h_acdbd04a77442c80f524b700fda3a06da}{sht\+\_\+enable\+\_\+low\+\_\+power\+\_\+mode}} (uint8\+\_\+t enable\+\_\+low\+\_\+power\+\_\+mode)
+\item 
+const char $\ast$ \mbox{\hyperlink{sht_8h_afa09daf4a74185de30242ad08bdb3cd1}{sht\+\_\+get\+\_\+driver\+\_\+version}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{sht_8h_a27d7b6b6497a93891a701387a1e7b220}{sht\+\_\+get\+\_\+configured\+\_\+sht\+\_\+address}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sensirion S\+HT driver interface. 
+
+This module provides access to the S\+HT functionality over a generic I2C interface. It supports measurements without clock stretching only. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sht_8h_a465fac222faad1a1f47d26c2dde98907}\label{sht_8h_a465fac222faad1a1f47d26c2dde98907}} 
+\index{sht.h@{sht.h}!sht\_disable\_sleep@{sht\_disable\_sleep}}
+\index{sht\_disable\_sleep@{sht\_disable\_sleep}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_disable\_sleep()}{sht\_disable\_sleep()}}
+{\footnotesize\ttfamily int8\+\_\+t sht\+\_\+disable\+\_\+sleep (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{disable\+\_\+sleep }\end{DoxyParamCaption})}
+
+Enable or disable the S\+HT\textquotesingle{}s sleep mode between measurements, if supported. Sleep mode is enabled by default when supported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em disable\+\_\+sleep} & 1 (or anything other than 0) to disable sleeping between measurements, 0 to enable sleeping. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the command was successful, 1 if an error occured or if sleep mode is not supported 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sht_8h_acdbd04a77442c80f524b700fda3a06da}\label{sht_8h_acdbd04a77442c80f524b700fda3a06da}} 
+\index{sht.h@{sht.h}!sht\_enable\_low\_power\_mode@{sht\_enable\_low\_power\_mode}}
+\index{sht\_enable\_low\_power\_mode@{sht\_enable\_low\_power\_mode}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_enable\_low\_power\_mode()}{sht\_enable\_low\_power\_mode()}}
+{\footnotesize\ttfamily void sht\+\_\+enable\+\_\+low\+\_\+power\+\_\+mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{enable\+\_\+low\+\_\+power\+\_\+mode }\end{DoxyParamCaption})}
+
+Enable or disable the S\+HT\textquotesingle{}s low power mode
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable\+\_\+low\+\_\+power\+\_\+mode} & 1 to enable low power mode, 0 to disable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sht_8h_a27d7b6b6497a93891a701387a1e7b220}\label{sht_8h_a27d7b6b6497a93891a701387a1e7b220}} 
+\index{sht.h@{sht.h}!sht\_get\_configured\_sht\_address@{sht\_get\_configured\_sht\_address}}
+\index{sht\_get\_configured\_sht\_address@{sht\_get\_configured\_sht\_address}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_get\_configured\_sht\_address()}{sht\_get\_configured\_sht\_address()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht\+\_\+get\+\_\+configured\+\_\+sht\+\_\+address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Returns the configured S\+H\+Txx address.
+
+\begin{DoxyReturn}{Returns}
+S\+H\+Txx\+\_\+\+A\+D\+D\+R\+E\+SS 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sht_8h_afa09daf4a74185de30242ad08bdb3cd1}\label{sht_8h_afa09daf4a74185de30242ad08bdb3cd1}} 
+\index{sht.h@{sht.h}!sht\_get\_driver\_version@{sht\_get\_driver\_version}}
+\index{sht\_get\_driver\_version@{sht\_get\_driver\_version}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_get\_driver\_version()}{sht\_get\_driver\_version()}}
+{\footnotesize\ttfamily const char$\ast$ sht\+\_\+get\+\_\+driver\+\_\+version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{sht_8h_afa09daf4a74185de30242ad08bdb3cd1}{sht\+\_\+get\+\_\+driver\+\_\+version()}} -\/ Return the driver version
+
+\begin{DoxyReturn}{Returns}
+Driver version string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sht_8h_a69ba16b497e8ef05309f3f8d9b8ba69a}\label{sht_8h_a69ba16b497e8ef05309f3f8d9b8ba69a}} 
+\index{sht.h@{sht.h}!sht\_measure@{sht\_measure}}
+\index{sht\_measure@{sht\_measure}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_measure()}{sht\_measure()}}
+{\footnotesize\ttfamily int8\+\_\+t sht\+\_\+measure (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Starts a measurement in high precision mode. Use \mbox{\hyperlink{sht_8h_a3b20bd6f7e406c922227da875c7dd889}{sht\+\_\+read()}} to read out the values, once the measurement is done. The duration of the measurement depends on the sensor in use, please consult the datasheet.
+
+\begin{DoxyReturn}{Returns}
+0 if the command was successful, else an error code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sht_8h_a41cb286ca446a15c68c82c6266b19952}\label{sht_8h_a41cb286ca446a15c68c82c6266b19952}} 
+\index{sht.h@{sht.h}!sht\_measure\_blocking\_read@{sht\_measure\_blocking\_read}}
+\index{sht\_measure\_blocking\_read@{sht\_measure\_blocking\_read}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_measure\_blocking\_read()}{sht\_measure\_blocking\_read()}}
+{\footnotesize\ttfamily int8\+\_\+t sht\+\_\+measure\+\_\+blocking\+\_\+read (\begin{DoxyParamCaption}\item[{int32\+\_\+t $\ast$}]{temperature,  }\item[{int32\+\_\+t $\ast$}]{humidity }\end{DoxyParamCaption})}
+
+Starts a measurement and then reads out the results. This function blocks while the measurement is in progress. The duration of the measurement depends on the sensor in use, please consult the datasheet. Temperature is returned in \mbox{[}degree Celsius\mbox{]}, multiplied by 1000, and relative humidity in \mbox{[}percent relative humidity\mbox{]}, multiplied by 1000.
+
+
+\begin{DoxyParams}{Parameters}
+{\em temperature} & the address for the result of the temperature measurement \\
+\hline
+{\em humidity} & the address for the result of the relative humidity measurement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the command was successful, else an error code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sht_8h_aae3fdcc5e292ae3dec9817d1b30467ec}\label{sht_8h_aae3fdcc5e292ae3dec9817d1b30467ec}} 
+\index{sht.h@{sht.h}!sht\_probe@{sht\_probe}}
+\index{sht\_probe@{sht\_probe}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_probe()}{sht\_probe()}}
+{\footnotesize\ttfamily int8\+\_\+t sht\+\_\+probe (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Detects if a sensor is connected by reading out the ID register. If the sensor does not answer or if the answer is not the expected value, the test fails.
+
+\begin{DoxyReturn}{Returns}
+0 if a sensor was detected 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sht_8h_a3b20bd6f7e406c922227da875c7dd889}\label{sht_8h_a3b20bd6f7e406c922227da875c7dd889}} 
+\index{sht.h@{sht.h}!sht\_read@{sht\_read}}
+\index{sht\_read@{sht\_read}!sht.h@{sht.h}}
+\subsubsection{\texorpdfstring{sht\_read()}{sht\_read()}}
+{\footnotesize\ttfamily int8\+\_\+t sht\+\_\+read (\begin{DoxyParamCaption}\item[{int32\+\_\+t $\ast$}]{temperature,  }\item[{int32\+\_\+t $\ast$}]{humidity }\end{DoxyParamCaption})}
+
+Reads out the results of a measurement that was previously started by \mbox{\hyperlink{sht_8h_a69ba16b497e8ef05309f3f8d9b8ba69a}{sht\+\_\+measure()}}. If the measurement is still in progress, this function returns an error. Temperature is returned in \mbox{[}degree Celsius\mbox{]}, multiplied by 1000, and relative humidity in \mbox{[}percent relative humidity\mbox{]}, multiplied by 1000.
+
+
+\begin{DoxyParams}{Parameters}
+{\em temperature} & the address for the result of the temperature measurement \\
+\hline
+{\em humidity} & the address for the result of the relative humidity measurement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the command was successful, else an error code. 
+\end{DoxyReturn}

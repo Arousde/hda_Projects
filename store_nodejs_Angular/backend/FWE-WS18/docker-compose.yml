@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mongodb:
+    image: bitnami/mongodb:latest
+    container_name: mongodb-playground
+    ports:
+      - "27017:27017"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes

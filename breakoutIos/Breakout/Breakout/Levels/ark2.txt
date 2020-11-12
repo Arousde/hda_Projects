@@ -1,0 +1,15 @@
++ + + + + + w y y y y y y + y y y y y y w + + + + + +
++ + + + + + w y y y y y y + y y y y y y w + + + + + +
++ + + + + + w b b b b b b b b b b b b b w + + + + + +
++ + + + + + w b b b b b b b b b b b b b w + + + + + +
++ + + + + + w b b a a a a a a a a a b b w + + + + + +
++ + + + + + w b b a w w w w w w w a b b w + + + + + +
++ + + + + + w b b a w + + + + + w a b b w + + + + + +
++ + + + + + w b b a w + + + + + w a b b w + + + + + +
++ + + + + + w b b a w + + + + + w a b b w + + + + + +
++ + + + + + w b b a w w y + y w w a b b w + + + + + +
++ + + + + + w b b a a a y + y a a a b b w + + + + + +
++ + + + + + w b b b b b y + y b b b b b w + + + + + +
++ + + + + + w y y y y y y + y y y y y y w + + + + + +
++ + + + + + w y y y y y y + y y y y y y w + + + + + +
+

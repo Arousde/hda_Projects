@@ -1,0 +1,172 @@
+<mat-toolbar class="apptitle"> {{  title }} </mat-toolbar>
+
+<mat-tab-group>
+
+  <!-- CREATE TAB -->
+
+  <mat-tab label="ADD A NEW PRODUCT">
+
+
+
+
+<div class ="addprod">
+<form class="example-form" name="form1">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Product Name" value="" name="prdname" [(ngModel)]="product.prodName" [ngModelOptions]="{standalone: true}" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Category " value="" name="cat"[(ngModel)]="product.category" [ngModelOptions]="{standalone: true}" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Quantity" value="" name="qty" type="number" [(ngModel)]="product.qty" [ngModelOptions]="{standalone: true}" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Material" value="" name="mat" [(ngModel)]="product.material" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Propreties" value="" name="prop" [(ngModel)]="product.propreties" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Color" value="" name="col" [(ngModel)]="product.color" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Price" value="" type="number" name="pr"  [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Currency EUR USD" value=""  name="cur"[(ngModel)]="product.currency" [ngModelOptions]="{standalone: true}" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Production Year" value=""type="date" name="year" [(ngModel)]="product.productionYear" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Made in" value="" name="made" [(ngModel)]="product.madeIn" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Brand" value="" name="brand" [(ngModel)]="product.brand" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Mass" value="" name="mass" [(ngModel)]="product.mass" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Size" value="" name="size" [(ngModel)]="product.size" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Rating" value="" [(ngModel)]="product.rating" name="rat" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+
+
+
+  <mat-label class="supp">Support: </mat-label><mat-radio-group [(ngModel)]="prdSupp" name="ok">
+  <mat-radio-button value="1" name="ok"  >Yes</mat-radio-button>&nbsp;
+  <mat-radio-button value="2" name="ok">No</mat-radio-button>
+</mat-radio-group>
+  <br><br>
+  <button  (click)="onSave()" class="btn" mat-button>Save</button>
+  <button  type="reset" class="btn" mat-button>Clear</button>
+  <button   (click)="onTop()" class="btn" mat-button>Top
+  <mat-icon class="icon">arrow_upward</mat-icon>
+  </button>
+</form>
+
+
+</div>
+
+  </mat-tab>
+
+
+
+    <!-- UPDATE TAB -->
+
+  <mat-tab label="UPDATE A PRODUCT">
+
+    <div class ="addprod">
+      <form class="example-form" name="form2">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Product _ID" value="" name="_id" [(ngModel)]="product._id" [ngModelOptions]="{standalone: true}" required >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Product Name" value="" name="prdname" [(ngModel)]="product.prodName" [ngModelOptions]="{standalone: true}" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Category " value="" name="cat"[(ngModel)]="product.category" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Quantity" value="" name="qty" type="number" [(ngModel)]="product.qty" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Material" value="" name="mat" [(ngModel)]="product.material" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Propreties" value="" name="prop" [(ngModel)]="product.propreties" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Color" value="" name="col" [(ngModel)]="product.color" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Price" value="" type="number" name="pr"  [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Currency EUR USD" value=""  name="cur"[(ngModel)]="product.currency" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Production Year" value=""type="date" name="year" [(ngModel)]="product.productionYear" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Made in" value="" name="made" [(ngModel)]="product.madeIn" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Brand" value="" name="brand" [(ngModel)]="product.brand" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Mass" value="" name="mass" [(ngModel)]="product.mass" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Size" value="" name="size" [(ngModel)]="product.size" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Rating" value="" [(ngModel)]="product.rating" name="rat" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+
+
+
+        <mat-label class="suppr">Support: </mat-label><mat-radio-group [(ngModel)]="prdSupp" name="okr">
+        <mat-radio-button value="1" name="okr"  >Yes</mat-radio-button>&nbsp;
+        <mat-radio-button value="2" name="okr">No</mat-radio-button>
+      </mat-radio-group>
+        <br><br>
+        <button  (click)="onUpdate()" class="btn" mat-button>UPDATE</button>
+        <button  type="reset" class="btn" mat-button>Clear</button>
+        <button   (click)="onTop()" class="btn" mat-button>Top
+          <mat-icon class="icon">arrow_upward</mat-icon>
+        </button>
+      </form>
+
+
+    </div>
+
+
+
+
+  </mat-tab>
+  <mat-tab label="More">  </mat-tab>
+</mat-tab-group>

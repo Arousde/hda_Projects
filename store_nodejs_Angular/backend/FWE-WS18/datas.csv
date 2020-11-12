@@ -1,0 +1,30 @@
+"createdUpdated","purchased","available","_id","prodName","category","qty","material","propreties","color","price","currency","productionYear","madeIn","brand","mass","size","rating","support","warranty","__v"
+"2018-11-01T13:42:40.754Z",32,false,"5bdb02d0ac12a4de5d8b4b1b","updated T-shirt","kleidung ",0,"polyster","sommer T-shirt","schwarz",10,"euro","2017","china","Nike","200 g","M","3",false,"no",
+"2018-11-01T13:43:11.592Z",2,true,"5bdb02efac12a4de5d8b4b1c","Nudeln ","Lebensmittel",121,"weizen","spaghethi","gelb",1.2,"euro","2018","Germany","maggi","1kg","10x10x3","5",false,"no",
+"2018-11-01T13:43:36.307Z",2,true,"5bdb0308ac12a4de5d8b4b1d","bürostuhl ","möblel",28,"holz , leder","super bequem","ferrari",300,"euro","2018","Germany","no-name","20kg","90x900x20","5",false,"1 year",
+"2018-11-01T13:44:04.077Z",0,true,"5bdb0324ac12a4de5d8b4b1e","rotWine","lebensmittle",30,"wine","süß","rot",7.3,"euro","1997","france","le bon Goût","1kg","70cl","10",false,"no",
+"2018-11-01T13:44:32.882Z",0,true,"5bdb0340ac12a4de5d8b4b1f","weißWine","lebensmittle",30,"wine","trocken","weiß",7.3,"euro","1997","france","le bon Goût","1kg","70cl","10",false,"no",
+"2018-11-01T13:45:01.609Z",0,true,"5bdb035dac12a4de5d8b4b20","Bier","lebensmittle",30,"pilz","5vol","grün",1.3,"euro","2018","germany","beks","0.5kg","35cl","10",false,"no",
+"2018-11-01T13:45:20.987Z",0,true,"5bdb0370ac12a4de5d8b4b21","kühlshrank","Elektronik",30,"hochwertig","smart-gefrierfach","weiß",600,"euro","2015","spain","El hacedor","120kg","50x120x40","10",true,"4 years",
+"2018-11-01T13:45:41.154Z",0,true,"5bdb0385ac12a4de5d8b4b22","tablet-pc","Elektronik",30,"hochwertig","multitouch mit 10 punkte","weiß",500,"euro","2015","korea","Samsung","0.5kg","10 zoll","10",true,"2 years",
+"2018-11-01T13:46:00.239Z",0,true,"5bdb0398ac12a4de5d8b4b23","pullover","kleidung ",30,"baumwolle","winter","schwarz",20,"euro","2017","china","Nike","200 g","XL","3",false,"no",
+"2018-11-01T13:46:21.231Z",0,true,"5bdb03adac12a4de5d8b4b24"," hdmi kable","Elekronik",30,"hochwertig","schnelle übertragung","schwarz",10,"euro","2017","china","Nike","200 g","M","3",false,"no",
+"2018-11-01T09:51:04.474Z",0,true,"5bdb491248901b0e34ca1e6a","PostSmartTV ","Electronik",30,"hochwertig","UHD-3D-smart","black",700,"euro","2018","Germany","Teleunken","8kg","60 zoll","5",true,"2 years",0
+"2018-11-11T09:40:10.124Z",0,true,"5be882aa8fdae40ebadd9b5c","angularTest","test",20,"test","test","test",12,"EUR",,"test","test","test","test","tes",false,,0
+"2018-11-11T09:40:10.124Z",0,true,"5be883b98fdae40ebadd9b5d","Schreibtisch","Büro",1,"Holz","flexible","braun",130,"EUR","2018-02-03","Germany","no brand","5kg","60x110cm","5",false,,0
+"2018-11-12T13:22:49.480Z",0,true,"5be98e1d33b9f91532fa9f6f","kouwirta","dafdoufiya",27,"ktonn","eddafi","akhther",30,"EUR","2018-11-15","elbarra","souhaila","23kg","23m","5",false,,0
+"2018-11-12T13:22:49.480Z",0,true,"5be9b8e933b9f91532fa9f70","FROM_ANGULAR_UPDATED","ok",12,"ok","ok","ok",12,"ok","2018-11-16","ok","ok","ok","ok","ok",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e24787fce659fc013b88","okUpdated","updatedok",23,"mhg","khg","kmhg",76,",nb","2018-11-16","hkgg","khg","kjg","kjg","kjg",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e29f87fce659fc013b89","okokok","okok",12,"ok","ok","ok",12,"ok","2018-11-17","ok","ok","ok","ok","ok",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e32787fce659fc013b8a","ooooooo","oooooo",12,"ooooo","ooooooo","ooooo",1,"o",,"oo","o","o","o","o",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e3db87fce659fc013b8b","sssssssss","ssssssss",12,"sss","sss","sss",65,"sss",,"sss","sss","ss","ss","ss",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e47f87fce659fc013b8c","kkkkk","kkkk",21,"KKKKK","kkkk","kkkk",76,"kkk",,"kkk","kkkk","kkk","kkk","kkk",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e68a87fce659fc013b8d","aaaa","aaaa",43,"aaaaa","aaaa","aaa",43,"aaaa",,"aaaa","aaaa","aaa","aaa","aaa",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e6c087fce659fc013b8e","asasasasas","sasasasasas",65,"sasasasa","sasasas","asasas",7676,"sasa",,"gfgf","sasas","asasas","asa","sasa",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e71187fce659fc013b8f","FROM_ANGULAR_UPDATEDgggg","gggg",65,"ggggg","ggggg","ggggg",767,"gggggg","2018-11-15","hjjhjhjkh","lkhlkhlk","lkhklh","lkhlkh","lkhlkh",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9e98687fce659fc013b90","ANGULARNGX","mn",87,"mn","mn","mn",98,"mn","2018-11-08","test","m","ss","jh","76",false,,0
+"2018-11-12T19:45:22.026Z",0,true,"5be9ec4487fce659fc013b91","ANGULARUPDATEDm","m",76,"m","m","m",87,"m",,"m","m","m","m","m",false,,0
+"2018-11-14T12:57:36.730Z",0,true,"5bec1d6c30698e2d6fab325c","a","a",6,"a","a","aa",7,"a",,"a","a","a","a","a",false,,0
+"2018-11-14T12:57:36.730Z",0,true,"5bec1d6c30698e2d6fab325d","a","a",6,"a","a","aa",7,"a",,"a","a","a","a","a",false,,0
+"2018-11-14T12:57:36.730Z",0,true,"5bec1d6c30698e2d6fab325e","a","a",6,"a","a","aa",7,"a",,"a","a","a","a","a",false,,0
+"2018-11-14T12:57:36.730Z",0,true,"5bec1d6c30698e2d6fab325f","a","a",6,"a","a","aa",7,"a",,"a","a","a","a","a",false,,0

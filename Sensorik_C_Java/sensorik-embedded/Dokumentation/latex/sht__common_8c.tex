@@ -1,0 +1,35 @@
+\hypertarget{sht__common_8c}{}\section{sensorik/sensorik.cydsn/\+S\+H\+T31/sht\+\_\+common.c File Reference}
+\label{sht__common_8c}\index{sensorik/sensorik.cydsn/SHT31/sht\_common.c@{sensorik/sensorik.cydsn/SHT31/sht\_common.c}}
+{\ttfamily \#include \char`\"{}sht\+\_\+common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensirion\+\_\+arch\+\_\+config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensirion\+\_\+common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensirion\+\_\+i2c.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sht.\+h\char`\"{}}\newline
+Include dependency graph for sht\+\_\+common.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sht__common_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sht__common_8c_a083a5d28c5436286b01af053c4545fc0}\label{sht__common_8c_a083a5d28c5436286b01af053c4545fc0}} 
+int8\+\_\+t {\bfseries sht\+\_\+common\+\_\+read\+\_\+ticks} (uint8\+\_\+t address, int32\+\_\+t $\ast$temperature\+\_\+ticks, int32\+\_\+t $\ast$humidity\+\_\+ticks)
+\item 
+int8\+\_\+t \mbox{\hyperlink{sht__common_8c_a70d3765b9ecfadbf8230641d81491582}{sht\+\_\+common\+\_\+read\+\_\+measurement}} (uint8\+\_\+t address, int32\+\_\+t $\ast$temperature, int32\+\_\+t $\ast$humidity)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module provides functionality that is common to all S\+HT drivers 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sht__common_8c_a70d3765b9ecfadbf8230641d81491582}\label{sht__common_8c_a70d3765b9ecfadbf8230641d81491582}} 
+\index{sht\_common.c@{sht\_common.c}!sht\_common\_read\_measurement@{sht\_common\_read\_measurement}}
+\index{sht\_common\_read\_measurement@{sht\_common\_read\_measurement}!sht\_common.c@{sht\_common.c}}
+\subsubsection{\texorpdfstring{sht\_common\_read\_measurement()}{sht\_common\_read\_measurement()}}
+{\footnotesize\ttfamily int8\+\_\+t sht\+\_\+common\+\_\+read\+\_\+measurement (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{int32\+\_\+t $\ast$}]{temperature,  }\item[{int32\+\_\+t $\ast$}]{humidity }\end{DoxyParamCaption})}
+
+formulas for conversion of the sensor signals, optimized for fixed point algebra\+: Temperature = 175 $\ast$ S\+\_\+T / 2$^\wedge$16 -\/ 45 Relative Humidity = 100 $\ast$ S\+\_\+\+RH / 2$^\wedge$16

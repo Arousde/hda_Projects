@@ -1,0 +1,80 @@
+#!/bin/bash
+typeset -i monat
+typeset -i jahr
+typeset -i future
+
+if [ $# -ne 2 ] ; then
+echo "accept only 2 arg MMYYYY 50"
+exit 1
+fi
+
+len1=${#1}
+if [ $len1 -ne 6 ] ; then
+echo " MMYYYY"
+exit 1
+fi
+read monat <<<$(echo $1|cut -c1-2 )
+read jahr <<<$(echo $1|cut -c3-6 )
+future=$jahr+$2
+if [ $monat -gt 12 ] ; then
+echo " month should be less than 12"
+exit 1
+fi
+
+echo "--------------------------------"
+echo $" Friday 13 of "${jahr}" from month ${monat} is in " 
+echo " "
+while [ ${monat} -le 12 ]
+do
+Fr13=`ncal ${monat} ${jahr}|grep Fr|grep 13`
+if [ ! -z "$Fr13" ] ; then 
+case ${monat} in
+1) echo $' januar\n' ;;
+2) echo $' Februar\n';;
+3) echo $' März\n';;
+4) echo $' April\n';;
+5) echo $' Mai\n' ;;
+6) echo $' Juni\n';;
+7) echo $' Juli \n';;
+8) echo $' August\n';;
+9) echo $' September\n';;
+10) echo $' Oktober\n' ;;
+11) echo $' November\n';;
+12) echo $' Dezember\n';;
+esac
+fi
+monat=${monat}+1
+done  
+echo "--------------------------------"
+jahr=${jahr}+1
+
+while [ ${jahr} -lt ${future} ]
+do
+echo $" Friday 13 of "${jahr}" is in " 
+echo " "
+monat=1
+while [ ${monat} -le 12 ]
+do
+Fr13=`ncal ${monat} ${jahr}|grep Fr|grep 13`
+if [ ! -z "$Fr13" ] ; then 
+case ${monat} in
+1) echo $' januar\n' ;;
+2) echo $' Februar\n';;
+3) echo $' März\n';;
+4) echo $' April\n';;
+5) echo $' Mai\n' ;;
+6) echo $' Juni\n';;
+7) echo $' Juli \n';;
+8) echo $' August\n';;
+9) echo $' September\n';;
+10) echo $' Oktober\n' ;;
+11) echo $' November\n';;
+12) echo $' Dezember\n';;
+esac
+fi
+monat=${monat}+1
+done  
+echo "--------------------------------"
+jahr=${jahr}+1
+done
+

@@ -1,0 +1,153 @@
+
+<mat-toolbar  class="apptitle"> {{  title }} </mat-toolbar>
+
+<div *ngIf="products.length == 0">
+  <mat-card class="card2"> No data yet... </mat-card>
+  </div>
+<div *ngIf="products.length > 0" >
+<mat-tab-group class="lab" >
+  <mat-tab class="lab"  label="First">
+
+
+    <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+      &lt;!&ndash;- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" &ndash;&gt;
+
+      &lt;!&ndash; Position Column &ndash;&gt;
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef> __ID </th>
+        <td mat-cell *matCellDef="let element "> {{element._id}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Name Column &ndash;&gt;
+      <ng-container matColumnDef="prodName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.prodName}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Weight Column &ndash;&gt;
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Symbol Column &ndash;&gt;
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Symbol Column &ndash;&gt;
+      <ng-container matColumnDef="purchased">
+        <th mat-header-cell *matHeaderCellDef> Purchased </th>
+        <td mat-cell *matCellDef="let element"> {{element.purchased}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </mat-tab>
+  <mat-tab class="lab"  label="Second">
+
+
+    <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+      &lt;!&ndash;- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" &ndash;&gt;
+
+      &lt;!&ndash; Name Column &ndash;&gt;
+      <ng-container matColumnDef="prodName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.prodName}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Position Column &ndash;&gt;
+      <ng-container matColumnDef="material">
+        <th mat-header-cell *matHeaderCellDef> Material </th>
+        <td mat-cell *matCellDef="let element "> {{element.material}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Name Column &ndash;&gt;
+      <ng-container matColumnDef="propreties">
+        <th mat-header-cell *matHeaderCellDef> Propreties </th>
+        <td mat-cell *matCellDef="let element"> {{element.propreties}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Weight Column &ndash;&gt;
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef> Color </th>
+        <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Symbol Column &ndash;&gt;
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Symbol Column &ndash;&gt;
+      <ng-container matColumnDef="available">
+        <th mat-header-cell *matHeaderCellDef> Available </th>
+        <td mat-cell *matCellDef="let element"> {{element.available}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </table>
+
+  </mat-tab>
+  <mat-tab class="lab" label="Third">
+
+
+    <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+      &lt;!&ndash;- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" &ndash;&gt;
+
+      &lt;!&ndash; Name Column &ndash;&gt;
+      <ng-container matColumnDef="prodName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.prodName}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Position Column &ndash;&gt;
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef> Currency </th>
+        <td mat-cell *matCellDef="let element "> {{element.currency}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Name Column &ndash;&gt;
+      <ng-container matColumnDef="productionYear">
+        <th mat-header-cell *matHeaderCellDef> Production Year </th>
+        <td mat-cell *matCellDef="let element"> {{element.productionYear}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Weight Column &ndash;&gt;
+      <ng-container matColumnDef="madeIn">
+        <th mat-header-cell *matHeaderCellDef> Made in </th>
+        <td mat-cell *matCellDef="let element"> {{element.madeIn}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Symbol Column &ndash;&gt;
+      <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef> Brand </th>
+        <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+    </table>
+
+
+
+
+  </mat-tab>
+
+
+
+</mat-tab-group>
+
+</div>

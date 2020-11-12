@@ -1,0 +1,7 @@
+com/company/jsonclass.class
+com/company/Main.class
+com/company/UdpSocketServer.class
+com/company/UdpSocketServer$Destination.class
+com/company/UdpSocketServer$message.class
+com/company/TcpSocketClient.class
+com/company/TcpSocketClient$Destination.class

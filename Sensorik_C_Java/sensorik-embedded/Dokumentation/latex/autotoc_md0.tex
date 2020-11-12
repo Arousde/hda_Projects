@@ -1,0 +1,99 @@
+Wir haben das Board C\+Y8\+C\+K\+I\+T-\/149 PsoC 4100S Plus Prototyping Kit benutzt, um Umweltdaten zu erfassen und diese dann per B\+LE an ein mobiles Endgerät weiterzuleiten. Auf diesem hat dann die Frontend-\/\+Gruppe eine Auswertung und Ansicht der Daten ermöglicht.\hypertarget{autotoc_md0_autotoc_md1}{}\section{Sensoren}\label{autotoc_md0_autotoc_md1}
+\hypertarget{autotoc_md0_autotoc_md2}{}\subsection{V\+O\+C\+Sens}\label{autotoc_md0_autotoc_md2}
+Das \href{https://www.glyn.de/Produkte/Sensoren/VOCSens}{\texttt{ V\+O\+C\+Sens board}} vereint die zwei Sensoren \href{https://www.sensirion.com/en/environmental-sensors/humidity-sensors/digital-humidity-sensors-for-various-applications/}{\texttt{ S\+H\+T31}} und \href{https://www.sensirion.com/de/umweltsensoren/gassensoren/multipixel-gassensoren/}{\texttt{ S\+G\+P30}} auf einem Board. Beide wurden hegestellt von \href{https://www.sensirion.com/en/}{\texttt{ Sensirion}}.\hypertarget{autotoc_md0_autotoc_md3}{}\subsection{S\+H\+T31 Sensor}\label{autotoc_md0_autotoc_md3}
+\href{https://github.com/Sensirion/embedded-sht}{\texttt{ Der benutzte Treiber}} ist von Sensirion erstellt.
+
+Initialisiere den S\+H\+T31 Sensor.
+
+Erst initialisiert man zwei Floats, einen für die Temperatur und einen für die Luftfeuchtigkeit.
+
+Dann initialisiert man entweder zwei Pointer auf diese Variablen und übergibt diese an die Messfunktion, oder übergibt deren Adressen direkt.
+
+Man hat die Wahl zwischen einer blockierenden und einer nicht blockierenden Funktion während der Messung. Im zweiten Fall muss man sichergehen genug Zeit verstreichen zu lassen, so dass der Sensor die Messung fertigstellen kann (in dem Fall 15ms).
+
+Die U\+A\+RT nutzt eine baud rate von 115200.
+
+Das ° Symbol der Temperatur könnte im Terminal nicht richtig dargestellt werden.
+
+Die Terminalausgabe sollte folgendermaßen aussehen\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Measured temperature: 24.152°C}
+\DoxyCodeLine{Measured humidity:    50.531\%}
+\DoxyCodeLine{Measured temperature: 24.165°C}
+\DoxyCodeLine{Measured humidity:    50.521\%}
+\DoxyCodeLine{Measured temperature: 24.136°C}
+\DoxyCodeLine{Measured humidity:    50.543\%}
+\DoxyCodeLine{Measured temperature: 24.152°C}
+\DoxyCodeLine{Measured humidity:    50.531\%}
+\DoxyCodeLine{...}
+\end{DoxyCode}
+\hypertarget{autotoc_md0_autotoc_md4}{}\subsubsection{Kombinierung mit einem anderen Projekt}\label{autotoc_md0_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Die $\ast$.c und $\ast$.h Dateien in das neue Projekt kopieren, {\bfseries{nicht}} aber die main.\+c
+\item Beide Elemente des {\bfseries{Top\+Design}} in das neue Projekt kopieren
+\item Die Pins entsprechend der Anwendungen belegen (Dieses Projekt nutzt 3.\+0 für I2C scl, 3.\+1 für I2C sda; 7.\+0 für U\+A\+RT rx und 7.\+1 für U\+A\+RT tx)
+\item \mbox{\hyperlink{_s_h_t31_8h_source}{S\+H\+T31.\+h}} in die main.\+c inkludieren
+\item Den Sensor mit {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Init()} einmalig initialisieren
+\end{DoxyItemize}
+
+Um eine Messung durchzuführen die Funktion {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Measure(double$\ast$ temperature\+\_\+, double$\ast$ humidity\+\_\+, bool console\+\_\+out)} wie folgt aufrufen\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{double temperature;}
+\DoxyCodeLine{double humidity;}
+\DoxyCodeLine{}
+\DoxyCodeLine{GY\_SHT31\_Measure(\&temperature, \&humidity, true);}
+\end{DoxyCode}
+
+
+Info\+: Die Funktion blockiert während der Messung. Man kann daher auch die Funktion {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Ready\+\_\+\+Measurement();} und {\ttfamily G\+Y\+\_\+\+S\+H\+T31\+\_\+\+Read\+\_\+\+Measurement(double$\ast$ temperature\+\_\+, double$\ast$ humidity\+\_\+, bool console\+\_\+out);} als eine nicht-\/blockierende Alternative verwenden\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{double temperature;}
+\DoxyCodeLine{double humidity;}
+\DoxyCodeLine{}
+\DoxyCodeLine{GY\_SHT31\_Ready\_Measurement();}
+\DoxyCodeLine{CyDelay(15);}
+\DoxyCodeLine{GY\_SHT31\_Read\_Measurement(\&temperature, \&humidity, true);}
+\end{DoxyCode}
+\hypertarget{autotoc_md0_autotoc_md5}{}\subsection{Adafruit S\+G\+P30}\label{autotoc_md0_autotoc_md5}
+Dieser Sensor misst e\+CO\textsubscript{2} und T\+V\+OC. \hypertarget{autotoc_md0_autotoc_md6}{}\subsubsection{e\+C\+O$<$sub$>$2$<$/sub$>$ (equivalent calculated carbon-\/dioxide)}\label{autotoc_md0_autotoc_md6}
+$>$Äquivalentes CO\textsubscript{2} ist die Konzentration von CO\textsubscript{2}, die den gleichen Strahlungsantrieb verursachen würde wie eine bestimmte Art und Konzentration von Treibhausgas. Beispiele für solche Treibhausgase sind Methan, Perfluorkohlenwasserstoffe und Lachgas. e\+CO\textsubscript{2} wird als parts per million by volume ausgedrückt, ppmv.\hypertarget{autotoc_md0_autotoc_md7}{}\subsubsection{T\+V\+O\+C (\+Total Volatile Organic Compound)}\label{autotoc_md0_autotoc_md7}
+$>$Die englische Abkürzung V\+OC (Volatile Organic Compounds) bezeichnet die Gruppe der flüchtigen organischen Verbindungen. V\+OC umschreibt gas-\/ und dampfförmige Stoffe organischen Ursprungs in der Luft. Dazu gehören zum Beispiel Kohlenwasserstoffe, Alkohole, Aldehyde und organische Säuren. Viele Lösemittel, Flüssigbrennstoffe und synthetisch hergestellte Stoffe können als V\+OC auftreten, aber auch zahlreiche organische Verbindungen, die in biologischen Prozessen gebildet werden. Viele hundert verschiedene Einzelverbindungen können in der Luft gemeinsam auftreten.
+
+$>$Konzentrationen, die gesundheitliche Beeinträchtigungen bewirken, können unmittelbar nach Bau-\/ und umfangreichen Renovierungsmaßnahmen auftreten, sowie bei unsachgemäßer Verarbeitung und massivem Einsatz wenig geeigneter Produkte. Geruchsbelästigungen, Reizungen und Symptome, die nicht unmittelbar einer Krankheit zugeordnet werden können, wurden als akute Wirkungen auf Menschen beschrieben. Diese Effekte müssen vermieden werden, ebenso mögliche chronische Wirkungen, die Wissenschaftlerinnen und Wissenschaftler aus toxikologischen Beurteilungen abgeleitet haben; besonders natürlich krebserzeugende, erbgutverändernde und fortpflanzungsgefährdende Wirkungen.\mbox{[}1\mbox{]}
+
+\mbox{[}1\mbox{]} \href{https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/chemische-stoffe/fluechtige-organische-verbindungen}{\texttt{ https\+://www.\+umweltbundesamt.\+de/themen/gesundheit/umwelteinfluesse-\/auf-\/den-\/menschen/chemische-\/stoffe/fluechtige-\/organische-\/verbindungen}}\hypertarget{autotoc_md0_autotoc_md8}{}\subsection{S\+P\+S30}\label{autotoc_md0_autotoc_md8}
+Dieser Sensor misst den Feinstaubgehalt in der Luft für Partikel einer bestimmten Größenordnung.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{C++\}}
+\DoxyCodeLine{struct sps30\_measurement\{}
+\DoxyCodeLine{    // Mass concentration in μg/m\string^3 (Microgram per cubic meter);  μ = 10\string^-6}
+\DoxyCodeLine{    float32\_t mc\_1p0;  // PM1.0  < 1.0 μm (Micrometer)}
+\DoxyCodeLine{    float32\_t mc\_2p5;  // PM2.5  < 2.5 μm}
+\DoxyCodeLine{    float32\_t mc\_4p0;  // PM4.0  < 4.0 μm}
+\DoxyCodeLine{    float32\_t mc\_10p0; // PM10.0 < 10.0 μm}
+\DoxyCodeLine{    // Amount per cm\string^3}
+\DoxyCodeLine{    float32\_t nc\_0p5;  // PM0.5  < 0.5 μm}
+\DoxyCodeLine{    float32\_t nc\_1p0;  // PM1.0  < 1.0 μm}
+\DoxyCodeLine{    float32\_t nc\_2p5;  // PM2.5  < 2.5 μm}
+\DoxyCodeLine{    float32\_t nc\_4p0;  // PM4.0  < 4.0 μm}
+\DoxyCodeLine{    float32\_t nc\_10p0; // PM10.0 < 10.0 μm}
+\DoxyCodeLine{    float32\_t typical\_particle\_size;}
+\DoxyCodeLine{\};}
+\end{DoxyCode}
+\hypertarget{autotoc_md0_autotoc_md9}{}\section{Autoren}\label{autotoc_md0_autotoc_md9}
+Nima Esmaeepour
+
+Timo Kautzmann
+
+Lennard Niesig
+
+Felix Ohms
+
+Maximilian Reinheimer
+
+Lucas Schürrmann 

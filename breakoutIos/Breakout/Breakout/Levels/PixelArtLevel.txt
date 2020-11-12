@@ -1,0 +1,15 @@
+b b b b b p p p p g g + + + g g B B B B B l l + + + +
+b b + + + b p p + + g + + + g + B + + + + l l + + + +
+b b + + + b p p + + + g + g + + B + + + + l l + + + +
+b b b b b + p p + + + + g + + + B B B B B l l + + + +
+b b + + + + p p + + + g + g + + B + + + + l l + + + +
+b b + + + + p p + + g + + + g + B + + + + l l + + + +
+b b + + + p p p p g g + + + g g B B B B B l l l l l l
++ + + + + a a a a a + r r r r r + y y y y y y + + + +
++ + + + a a + + + a a r r + + + r y y y y y y + + + +
++ + + + a a + + + a a r r + + + r + + y y + + + + + +
++ + + + a a + + + a a r r r r r + + + y y + + + + + +
++ + + + a a a a a a a r r r r + + + + y y + + + + + +
++ + + + a a + + + a a r r + r r + + + y y + + + + + +
++ + + + a a + + + a a r r + + r r + + y y + + + + + +
+

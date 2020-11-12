@@ -1,0 +1,610 @@
+\hypertarget{event_8c}{}\section{sensorik/src/event.c File Reference}
+\label{event_8c}\index{sensorik/src/event.c@{sensorik/src/event.c}}
+
+
+Provides eventstructure for data serialisation.  
+
+
+{\ttfamily \#include \char`\"{}event.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$project.\+h$>$}\newline
+Include dependency graph for event.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{event_8c_ac2beef6ea802ab9072d138c51aaac714}{display\+Evt\+Subevt\+Types}} ()
+\begin{DoxyCompactList}\small\item\em Display event types and subtypes by name. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{event_8c_a4bcf38e1dfd538d1fabc824905006ec7}{get\+Evt\+Type\+Name}} (uint8 type)
+\begin{DoxyCompactList}\small\item\em Get define macro name for event type number. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{event_8c_a8cc73c64a8d68b40fd398f3b0129a7a4}{get\+Evt\+Sub\+Type\+Name}} (uint8 type)
+\begin{DoxyCompactList}\small\item\em Get define macro name for event subtype number. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a5d73f8d39d7ee098de13d2ebfa28935d}{set\+Data\+Ptr}} (void $\ast$p\+Data\+Addr)
+\begin{DoxyCompactList}\small\item\em Set data pointer. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_aa02988398fe1babb0dea3611f20f86ba}{get\+Data\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Get data pointer. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a254995984fa6c778e6b146fa1b8ea8f1}{set\+Storage\+Start\+Ptr}} (void $\ast$p\+Addr, uint32 size)
+\begin{DoxyCompactList}\small\item\em Set storage start pointer and size. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_ae57cbc722e5c7581bf67b4e5e2dcc1ba}{get\+Start\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Get storage start pointer. \end{DoxyCompactList}\item 
+uint32 \mbox{\hyperlink{event_8c_ad4dc906bc5d4290d3d8d2d74c3d64d99}{get\+Storage\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get storage size. \end{DoxyCompactList}\item 
+uint32 \mbox{\hyperlink{event_8c_af346352863db6ac530a8ebcac7332ac6}{get\+Free\+Storage\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get free storage size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{event_8c_a2577598e22d447dcff2fe8a7bf31cce2}{reset\+Event\+Buffer}} ()
+\item 
+void $\ast$ \mbox{\hyperlink{event_8c_af46d75bbc47993414240b79629dfcd55}{write\+Head\+Evt}} (uint8 type, uint8 subtype)
+\begin{DoxyCompactList}\small\item\em Write Header only event. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{event_8c_aeaf1360e5dd7991f7879a1b00e616cf6}{print\+Evt\+Head}} (void $\ast$ptr2evt, char $\ast$buf)
+\begin{DoxyCompactList}\small\item\em Print event header to buffer. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a005a25209927096b8af36a11c5a0e48f}{write\+Air\+Quality\+Evt}} (uint16 subtype, uint16\+\_\+t e\+C\+O2, uint16\+\_\+t tvoc)
+\begin{DoxyCompactList}\small\item\em Write A\+IR Quality event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a9205da16569aeb4859aad7f3eaf0351c}{write\+I\+Devt}} (uint16 subtype, uint32 id)
+\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a3e0c3baf8006ed49ab5bd6420593481c}{write\+Version\+I\+Devt}} (uint32 id)
+\begin{DoxyCompactList}\small\item\em Write version ID event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a159ce119e41a6cc21086dcee865c9658}{write\+Number\+I\+Devt}} (uint32 id)
+\begin{DoxyCompactList}\small\item\em Write number ID event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a4b038ae72b4572e6e9e47eb8877d10bf}{write\+Timestamp\+I\+Devt}} (uint32 ts)
+\begin{DoxyCompactList}\small\item\em Write timestamp ID event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_ae8d047e66540dfad4d36384ec3bf028c}{write\+Seconds\+I\+Devt}} (uint32 sec)
+\begin{DoxyCompactList}\small\item\em Write seconds ID event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a35d1606782a345da7c98f5b250f5bbc2}{write\+String\+Evt}} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Write string event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_a88c04edbfdd6e7e383143585b780a1c7}{write\+Data\+Evt}} (uint16 subtype, uint8 $\ast$p\+Data, uint16 data\+Len)
+\begin{DoxyCompactList}\small\item\em Data event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_acdebb64ee01f7bdeca08c06308efc87f}{event\+Write\+Temp\+Hum}} (const uint8 subtype, const uint32\+\_\+t temperature, const uint32\+\_\+t humidity)
+\begin{DoxyCompactList}\small\item\em Write Ev t\+Particulates event. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{event_8c_ad224043495ada1054bd4571b07449e72}{event\+Write\+S\+H\+T31\+Temp\+Hum}} (const uint32\+\_\+t temperature, const uint32\+\_\+t humidity)
+\item 
+\mbox{\Hypertarget{event_8c_afb4c6d163e599a40bab3a2a26823f16b}\label{event_8c_afb4c6d163e599a40bab3a2a26823f16b}} 
+void $\ast$ {\bfseries event\+Write\+Particulates} (const uint8 subtype, const uint32\+\_\+t M\+C\+\_\+\+P\+M1p0, const uint32\+\_\+t M\+C\+\_\+\+P\+M2p5, const uint32\+\_\+t M\+C\+\_\+\+P\+M4p0, const uint32\+\_\+t M\+C\+\_\+\+P\+M10p0, const uint32\+\_\+t N\+C\+\_\+\+P\+M0p5, const uint32\+\_\+t N\+C\+\_\+\+P\+M1p0, const uint32\+\_\+t N\+C\+\_\+\+P\+M2p5, const uint32\+\_\+t N\+C\+\_\+\+P\+M4p0, const uint32\+\_\+t N\+C\+\_\+\+P\+M10p0, const uint32\+\_\+t typical\+\_\+particle\+\_\+size)
+\item 
+\mbox{\Hypertarget{event_8c_ac730c695cdf441e1d3a7922640273567}\label{event_8c_ac730c695cdf441e1d3a7922640273567}} 
+void $\ast$ {\bfseries event\+Write\+S\+P\+S30\+Particulates} (const uint32\+\_\+t M\+C\+\_\+\+P\+M1p0, const uint32\+\_\+t M\+C\+\_\+\+P\+M2p5, const uint32\+\_\+t M\+C\+\_\+\+P\+M4p0, const uint32\+\_\+t M\+C\+\_\+\+P\+M10p0, const uint32\+\_\+t N\+C\+\_\+\+P\+M0p5, const uint32\+\_\+t N\+C\+\_\+\+P\+M1p0, const uint32\+\_\+t N\+C\+\_\+\+P\+M2p5, const uint32\+\_\+t N\+C\+\_\+\+P\+M4p0, const uint32\+\_\+t N\+C\+\_\+\+P\+M10p0, const uint32\+\_\+t typical\+\_\+particle\+\_\+size)
+\item 
+void $\ast$ \mbox{\hyperlink{event_8c_aacdce2fdf41e6ba5ef9624550ebb6862}{read\+Event}} (void $\ast$ptr2evt, uint8 $\ast$p\+Type, uint8 $\ast$p\+S\+Type, uint16 $\ast$p\+Len)
+\begin{DoxyCompactList}\small\item\em Read event, get header info, return ptr to next event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides eventstructure for data serialisation. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{event_8c_ac2beef6ea802ab9072d138c51aaac714}\label{event_8c_ac2beef6ea802ab9072d138c51aaac714}} 
+\index{event.c@{event.c}!displayEvtSubevtTypes@{displayEvtSubevtTypes}}
+\index{displayEvtSubevtTypes@{displayEvtSubevtTypes}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{displayEvtSubevtTypes()}{displayEvtSubevtTypes()}}
+{\footnotesize\ttfamily void display\+Evt\+Subevt\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display event types and subtypes by name. 
+
+Display event types and subtypes by name Needs $<$project.\+h$>$
+
+\begin{DoxyAuthor}{Author}
+R. S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/05-\/23 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_ad224043495ada1054bd4571b07449e72}\label{event_8c_ad224043495ada1054bd4571b07449e72}} 
+\index{event.c@{event.c}!eventWriteSHT31TempHum@{eventWriteSHT31TempHum}}
+\index{eventWriteSHT31TempHum@{eventWriteSHT31TempHum}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{eventWriteSHT31TempHum()}{eventWriteSHT31TempHum()}}
+{\footnotesize\ttfamily void$\ast$ event\+Write\+S\+H\+T31\+Temp\+Hum (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{temperature,  }\item[{const uint32\+\_\+t}]{humidity }\end{DoxyParamCaption})}
+
+Write a temperature \& humidity event with measurements from a S\+H\+T31 sensor.
+
+\begin{DoxyAuthor}{Author}
+Felix Ohms 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+07.\+06.\+2019
+\end{DoxyDate}
+
+\begin{DoxyParams}{Parameters}
+{\em temperature} & The measured temperature, multiplied with 1000. \\
+\hline
+{\em humidity} & The measured temperature, multiplied with 1000. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8c_acdebb64ee01f7bdeca08c06308efc87f}\label{event_8c_acdebb64ee01f7bdeca08c06308efc87f}} 
+\index{event.c@{event.c}!eventWriteTempHum@{eventWriteTempHum}}
+\index{eventWriteTempHum@{eventWriteTempHum}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{eventWriteTempHum()}{eventWriteTempHum()}}
+{\footnotesize\ttfamily void$\ast$ event\+Write\+Temp\+Hum (\begin{DoxyParamCaption}\item[{const uint8}]{subtype,  }\item[{const uint32\+\_\+t}]{temperature,  }\item[{const uint32\+\_\+t}]{humidity }\end{DoxyParamCaption})}
+
+
+
+Write Ev t\+Particulates event. 
+
+Write a temperature \& humidity event with a specified subtype. The subtype indicates which sensor the measurements came from.
+
+\begin{DoxyAuthor}{Author}
+Felix Ohms 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+07.\+06.\+2019
+\end{DoxyDate}
+
+\begin{DoxyParams}{Parameters}
+{\em subtype} & The subtype of the event. \\
+\hline
+{\em temperature} & The measured temperature, multiplied with 1000. \\
+\hline
+{\em humidity} & The measured temperature, multiplied with 1000. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8c_aa02988398fe1babb0dea3611f20f86ba}\label{event_8c_aa02988398fe1babb0dea3611f20f86ba}} 
+\index{event.c@{event.c}!getDataPtr@{getDataPtr}}
+\index{getDataPtr@{getDataPtr}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{getDataPtr()}{getDataPtr()}}
+{\footnotesize\ttfamily void$\ast$ get\+Data\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get data pointer. 
+
+Get data pointer \begin{DoxyReturn}{Returns}
+address
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/06 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a8cc73c64a8d68b40fd398f3b0129a7a4}\label{event_8c_a8cc73c64a8d68b40fd398f3b0129a7a4}} 
+\index{event.c@{event.c}!getEvtSubTypeName@{getEvtSubTypeName}}
+\index{getEvtSubTypeName@{getEvtSubTypeName}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{getEvtSubTypeName()}{getEvtSubTypeName()}}
+{\footnotesize\ttfamily char$\ast$ get\+Evt\+Sub\+Type\+Name (\begin{DoxyParamCaption}\item[{uint8}]{type }\end{DoxyParamCaption})}
+
+
+
+Get define macro name for event subtype number. 
+
+Get define macro name for event subtype number. 
+\begin{DoxyParams}{Parameters}
+{\em type} & event type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+define name or \char`\"{}not found\char`\"{}
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+R. S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/08 
+
+2019-\/05-\/23 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a4bcf38e1dfd538d1fabc824905006ec7}\label{event_8c_a4bcf38e1dfd538d1fabc824905006ec7}} 
+\index{event.c@{event.c}!getEvtTypeName@{getEvtTypeName}}
+\index{getEvtTypeName@{getEvtTypeName}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{getEvtTypeName()}{getEvtTypeName()}}
+{\footnotesize\ttfamily char$\ast$ get\+Evt\+Type\+Name (\begin{DoxyParamCaption}\item[{uint8}]{type }\end{DoxyParamCaption})}
+
+
+
+Get define macro name for event type number. 
+
+Get define macro name for event type number. 
+\begin{DoxyParams}{Parameters}
+{\em type} & event type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+define name or \char`\"{}not found\char`\"{}
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+R. S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/05-\/23 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_af346352863db6ac530a8ebcac7332ac6}\label{event_8c_af346352863db6ac530a8ebcac7332ac6}} 
+\index{event.c@{event.c}!getFreeStorageSize@{getFreeStorageSize}}
+\index{getFreeStorageSize@{getFreeStorageSize}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{getFreeStorageSize()}{getFreeStorageSize()}}
+{\footnotesize\ttfamily uint32 get\+Free\+Storage\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get free storage size. 
+
+Get free storage size \begin{DoxyReturn}{Returns}
+free storage size (bytes) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8c_ae57cbc722e5c7581bf67b4e5e2dcc1ba}\label{event_8c_ae57cbc722e5c7581bf67b4e5e2dcc1ba}} 
+\index{event.c@{event.c}!getStartPtr@{getStartPtr}}
+\index{getStartPtr@{getStartPtr}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{getStartPtr()}{getStartPtr()}}
+{\footnotesize\ttfamily void$\ast$ get\+Start\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get storage start pointer. 
+
+Get storage start pointer \begin{DoxyReturn}{Returns}
+storage start pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8c_ad4dc906bc5d4290d3d8d2d74c3d64d99}\label{event_8c_ad4dc906bc5d4290d3d8d2d74c3d64d99}} 
+\index{event.c@{event.c}!getStorageSize@{getStorageSize}}
+\index{getStorageSize@{getStorageSize}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{getStorageSize()}{getStorageSize()}}
+{\footnotesize\ttfamily uint32 get\+Storage\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get storage size. 
+
+Get storage size \begin{DoxyReturn}{Returns}
+storage size (bytes) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8c_aeaf1360e5dd7991f7879a1b00e616cf6}\label{event_8c_aeaf1360e5dd7991f7879a1b00e616cf6}} 
+\index{event.c@{event.c}!printEvtHead@{printEvtHead}}
+\index{printEvtHead@{printEvtHead}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{printEvtHead()}{printEvtHead()}}
+{\footnotesize\ttfamily char$\ast$ print\+Evt\+Head (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr2evt,  }\item[{char $\ast$}]{buf }\end{DoxyParamCaption})}
+
+
+
+Print event header to buffer. 
+
+Print event header to string buffer 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ptr2evt} & pointer to event \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em buf} & buffer to string ($>$= 16 + 10 + define name length byte), $>$= 64 bytes recommended \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+evt\+Type\+Msg 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+ptr to string buffer
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/08 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_aacdce2fdf41e6ba5ef9624550ebb6862}\label{event_8c_aacdce2fdf41e6ba5ef9624550ebb6862}} 
+\index{event.c@{event.c}!readEvent@{readEvent}}
+\index{readEvent@{readEvent}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{readEvent()}{readEvent()}}
+{\footnotesize\ttfamily void$\ast$ read\+Event (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr2evt,  }\item[{uint8 $\ast$}]{p\+Type,  }\item[{uint8 $\ast$}]{p\+S\+Type,  }\item[{uint16 $\ast$}]{p\+Len }\end{DoxyParamCaption})}
+
+
+
+Read event, get header info, return ptr to next event. 
+
+Read event, get header info, return ptr to next event 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ptr2evt} & pointer to event or buffer start pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{event_8c_ae57cbc722e5c7581bf67b4e5e2dcc1ba}{get\+Start\+Ptr()}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em p\+Type} & ptr to event type \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+S\+Type} & ptr to event subtype \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Len} & ptr to event length (bytes) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ptr to next event or 0 if evt-\/typ/subtype is E\+OF
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/07 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a2577598e22d447dcff2fe8a7bf31cce2}\label{event_8c_a2577598e22d447dcff2fe8a7bf31cce2}} 
+\index{event.c@{event.c}!resetEventBuffer@{resetEventBuffer}}
+\index{resetEventBuffer@{resetEventBuffer}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{resetEventBuffer()}{resetEventBuffer()}}
+{\footnotesize\ttfamily void reset\+Event\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the event buffer, effectively emptying it. \mbox{\Hypertarget{event_8c_a5d73f8d39d7ee098de13d2ebfa28935d}\label{event_8c_a5d73f8d39d7ee098de13d2ebfa28935d}} 
+\index{event.c@{event.c}!setDataPtr@{setDataPtr}}
+\index{setDataPtr@{setDataPtr}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{setDataPtr()}{setDataPtr()}}
+{\footnotesize\ttfamily void$\ast$ set\+Data\+Ptr (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+Data\+Addr }\end{DoxyParamCaption})}
+
+
+
+Set data pointer. 
+
+Set data pointer 
+\begin{DoxyParams}{Parameters}
+{\em p\+Data\+Addr} & new address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+old address
+\end{DoxyReturn}
+Remark\+: Using void$\ast$ is a little bit \textquotesingle{}dirty\textquotesingle{}. Use it with care!
+
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/06 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a254995984fa6c778e6b146fa1b8ea8f1}\label{event_8c_a254995984fa6c778e6b146fa1b8ea8f1}} 
+\index{event.c@{event.c}!setStorageStartPtr@{setStorageStartPtr}}
+\index{setStorageStartPtr@{setStorageStartPtr}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{setStorageStartPtr()}{setStorageStartPtr()}}
+{\footnotesize\ttfamily void$\ast$ set\+Storage\+Start\+Ptr (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+Addr,  }\item[{uint32}]{size }\end{DoxyParamCaption})}
+
+
+
+Set storage start pointer and size. 
+
+Set storage start pointer and size 
+\begin{DoxyParams}{Parameters}
+{\em p\+Addr} & storage start address \\
+\hline
+{\em size} & storage total size (bytes) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+old address
+\end{DoxyReturn}
+Remark\+: Using void$\ast$ is a little bit \textquotesingle{}dirty\textquotesingle{}. Use it with care!
+
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/07 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a005a25209927096b8af36a11c5a0e48f}\label{event_8c_a005a25209927096b8af36a11c5a0e48f}} 
+\index{event.c@{event.c}!writeAirQualityEvt@{writeAirQualityEvt}}
+\index{writeAirQualityEvt@{writeAirQualityEvt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeAirQualityEvt()}{writeAirQualityEvt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Air\+Quality\+Evt (\begin{DoxyParamCaption}\item[{uint16}]{subtype,  }\item[{uint16\+\_\+t}]{e\+C\+O2,  }\item[{uint16\+\_\+t}]{tvoc }\end{DoxyParamCaption})}
+
+
+
+Write A\+IR Quality event. 
+
+Write Air Quality Event. Internal (protected) function 
+\begin{DoxyParams}{Parameters}
+{\em subtype} & event subtype \\
+\hline
+{\em e\+C\+O2} & e\+C\+O2 \\
+\hline
+{\em tvoc} & T\+V\+OC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Adress of Event
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Maximilian Reinheimer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/6-\/6 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a88c04edbfdd6e7e383143585b780a1c7}\label{event_8c_a88c04edbfdd6e7e383143585b780a1c7}} 
+\index{event.c@{event.c}!writeDataEvt@{writeDataEvt}}
+\index{writeDataEvt@{writeDataEvt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeDataEvt()}{writeDataEvt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Data\+Evt (\begin{DoxyParamCaption}\item[{uint16}]{subtype,  }\item[{uint8 $\ast$}]{p\+Data,  }\item[{uint16}]{data\+Len }\end{DoxyParamCaption})}
+
+
+
+Data event. 
+
+Dust event\+Data event (test) 
+\begin{DoxyParams}{Parameters}
+{\em subtype} & \\
+\hline
+{\em p\+Data} & Pointer to byte field \\
+\hline
+{\em data\+Len} & of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/05-\/23 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_af46d75bbc47993414240b79629dfcd55}\label{event_8c_af46d75bbc47993414240b79629dfcd55}} 
+\index{event.c@{event.c}!writeHeadEvt@{writeHeadEvt}}
+\index{writeHeadEvt@{writeHeadEvt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeHeadEvt()}{writeHeadEvt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Head\+Evt (\begin{DoxyParamCaption}\item[{uint8}]{type,  }\item[{uint8}]{subtype }\end{DoxyParamCaption})}
+
+
+
+Write Header only event. 
+
+Write Header only event 
+\begin{DoxyParams}{Parameters}
+{\em type} & event type \\
+\hline
+{\em subtype} & event subtype \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/06 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a9205da16569aeb4859aad7f3eaf0351c}\label{event_8c_a9205da16569aeb4859aad7f3eaf0351c}} 
+\index{event.c@{event.c}!writeIDevt@{writeIDevt}}
+\index{writeIDevt@{writeIDevt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeIDevt()}{writeIDevt()}}
+{\footnotesize\ttfamily void$\ast$ write\+I\+Devt (\begin{DoxyParamCaption}\item[{uint16}]{subtype,  }\item[{uint32}]{id }\end{DoxyParamCaption})}
+
+Write ID event. Internal (protected) function 
+\begin{DoxyParams}{Parameters}
+{\em subtype} & event subtype \\
+\hline
+{\em id} & event number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/05-\/23 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a159ce119e41a6cc21086dcee865c9658}\label{event_8c_a159ce119e41a6cc21086dcee865c9658}} 
+\index{event.c@{event.c}!writeNumberIDevt@{writeNumberIDevt}}
+\index{writeNumberIDevt@{writeNumberIDevt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeNumberIDevt()}{writeNumberIDevt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Number\+I\+Devt (\begin{DoxyParamCaption}\item[{uint32}]{id }\end{DoxyParamCaption})}
+
+
+
+Write number ID event. 
+
+Write number ID event 
+\begin{DoxyParams}{Parameters}
+{\em id} & event number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/06 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_ae8d047e66540dfad4d36384ec3bf028c}\label{event_8c_ae8d047e66540dfad4d36384ec3bf028c}} 
+\index{event.c@{event.c}!writeSecondsIDevt@{writeSecondsIDevt}}
+\index{writeSecondsIDevt@{writeSecondsIDevt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeSecondsIDevt()}{writeSecondsIDevt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Seconds\+I\+Devt (\begin{DoxyParamCaption}\item[{uint32}]{sec }\end{DoxyParamCaption})}
+
+
+
+Write seconds ID event. 
+
+Write seconds ID event 
+\begin{DoxyParams}{Parameters}
+{\em sec} & seconds since program start \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/08 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a35d1606782a345da7c98f5b250f5bbc2}\label{event_8c_a35d1606782a345da7c98f5b250f5bbc2}} 
+\index{event.c@{event.c}!writeStringEvt@{writeStringEvt}}
+\index{writeStringEvt@{writeStringEvt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeStringEvt()}{writeStringEvt()}}
+{\footnotesize\ttfamily void$\ast$ write\+String\+Evt (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Write string event. 
+
+Write string event 
+\begin{DoxyParams}{Parameters}
+{\em string} & with length $<$ 65536 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/06 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a4b038ae72b4572e6e9e47eb8877d10bf}\label{event_8c_a4b038ae72b4572e6e9e47eb8877d10bf}} 
+\index{event.c@{event.c}!writeTimestampIDevt@{writeTimestampIDevt}}
+\index{writeTimestampIDevt@{writeTimestampIDevt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeTimestampIDevt()}{writeTimestampIDevt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Timestamp\+I\+Devt (\begin{DoxyParamCaption}\item[{uint32}]{ts }\end{DoxyParamCaption})}
+
+
+
+Write timestamp ID event. 
+
+Write timestamp ID event 
+\begin{DoxyParams}{Parameters}
+{\em ts} & time stamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/01-\/06 
+\end{DoxyDate}
+\mbox{\Hypertarget{event_8c_a3e0c3baf8006ed49ab5bd6420593481c}\label{event_8c_a3e0c3baf8006ed49ab5bd6420593481c}} 
+\index{event.c@{event.c}!writeVersionIDevt@{writeVersionIDevt}}
+\index{writeVersionIDevt@{writeVersionIDevt}!event.c@{event.c}}
+\subsubsection{\texorpdfstring{writeVersionIDevt()}{writeVersionIDevt()}}
+{\footnotesize\ttfamily void$\ast$ write\+Version\+I\+Devt (\begin{DoxyParamCaption}\item[{uint32}]{id }\end{DoxyParamCaption})}
+
+
+
+Write version ID event. 
+
+Write version ID event 
+\begin{DoxyParams}{Parameters}
+{\em id} & of SW (event/subevnet types) version \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new address, i.\+e. next free
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ralf S. Mayer 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/0523 
+\end{DoxyDate}

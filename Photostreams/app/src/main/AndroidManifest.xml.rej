@@ -1,0 +1,10 @@
+diff a/Photostreams/app/src/main/AndroidManifest.xml b/Photostreams/app/src/main/AndroidManifest.xml	(rejected hunks)
+@@ -2,8 +2,6 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="heinemann.photostreams">
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+-    <uses-permission android:name="android.permission.INTERNET" />
+ 
+     <application
+         android:allowBackup="true"
